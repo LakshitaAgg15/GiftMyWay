@@ -1,0 +1,210 @@
+
+img {
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+button{
+    /* background-image: url(gift.jpg); */
+    height:100px;
+    width:120px;
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 2px;
+    border:none;
+    background-color: #cc4747;
+    color: beige;
+    margin-left: 120px;
+    margin-right: 120px;
+    
+}
+
+button:hover {
+    background-color: rgb(235, 63, 63);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fbdbdb;
+}
+
+h1, h2 {
+    color: #444;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    color: white;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ffebd8;
+}
+.scroll-link{
+    color: white;
+
+}
+.scroll-link:hover{
+    color: rgb(219, 198, 63);
+
+}
+/* Gift Sections */
+.gift-section {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+.gift-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.gift-card {
+    display: inline-block;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 150px;
+    margin: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.gift-card img{
+    position: relative;
+    height:150px;
+    width: 150px;
+}
+.gift-card:hover {
+    background-color: #ffebd8;
+    transition: background-color 0.3s;
+}
+
+/* Customize Your Gift Section */
+#customize button {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#customize button:hover {
+    background-color: #ff5a4d;
+}
+
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-info h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+    color: #666;
+}
+
+.profile-photo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+/* Order History Section */
+.order-history h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.order-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-history th, .order-history td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-history th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.order-history td {
+    color: #666;
+}
+
+/* Edit Profile Button */
+.edit-profile {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.edit-profile-btn {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-block;
+
+}
+
+.edit-profile-btn:hover {
+    background-color: #ff5a4d;
+}
