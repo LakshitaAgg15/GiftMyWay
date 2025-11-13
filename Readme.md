@@ -8,20 +8,16 @@ A clean, responsive, and user-friendly static website for a conceptual online gi
 
 ## 📸 Project Preview
 
-*(It's highly recommended to add a screenshot of your project's homepage here!)*
-
 ## ✨ Features
 
-* **Clean Homepage:** A simple, image-focused layout for an engaging user experience.
-* **Gift Categories:** Browse gift ideas for Men, Women, and Kids.
-* **Static Pages:** Includes skeletons for a `dashboard.html` and `cart.html`.
-* **Responsive Design:** The layout adapts to various screen sizes, from mobile phones to desktops.
+- 🧑‍🤝‍🧑 **Categorized Gifting Options** — Browse gifts for Men, Women, and Kids.
+- 🎨 **Custom Gift Section** — Create a personalized gift experience.
+- 📱 **Clean and Responsive UI** — Simple layout designed for easy navigation.
+- 💡 **Static Website** — Lightweight and beginner-friendly project to understand basic web structure.
 
 ## 🚧 Project Goals & Future Features (To-Do)
 
-This project is a work in progress. The current version establishes the front-end design (HTML/CSS). The next steps involve bringing the site to life with JavaScript.
-
-Here is the planned roadmap:
+This project is a work in progress. The current version establishes the front-end design (HTML/CSS/JavaScript). The next steps involve bringing the site to life with more ehnacements:
 
 * **[ ] Dynamic Cart:** Implement "Add to Cart" functionality using JavaScript and `localStorage` to store items.
 * **[ ] Custom Gift Builder:** Build out the interactive "Customize Your Gift" page, allowing users to select multiple items to create a personalized gift box.
@@ -31,9 +27,11 @@ Here is the planned roadmap:
 
 ## 💻 Tech Stack
 
-* **HTML5**
-* **CSS3**
-* **JavaScript (for planned features)**
+| Technology | Purpose |
+|-------------|----------|
+| **HTML5** | Structure of the website |
+| **CSS3** | Styling and layout |
+| **JavaScript (vanilla)** | Interactivity (for future updates) |
 
 ## 🔧 Getting Started
 
