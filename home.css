@@ -208,3 +208,45 @@ header nav a:hover {
 .edit-profile-btn:hover {
     background-color: #ff5a4d;
 }
+
+.footer {
+  padding: 0 200px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column h4 {
+    margin-bottom: 8px;
+}
+
+.column ul {
+    margin-top: 8px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-rights {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+}
+
+.social img {
+  width: 24px;
+  height: 24px;
+}
