@@ -1,71 +1,190 @@
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >GiftMyWay</title>
-    <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiftMyWay</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
     <!-- Navigation Bar -->
     <header>
-        <h1>GiftMyWay</h1>
-        <input type="text" id="search" placeholder="Search products...">
-        <nav>
+      <nav class="navbar">
+        <div class="logo">
+          <img src="images/giftLogo.png" id="giftLogo" alt="Gift" />
+          <h1 class="site-name">
+            <a href="index.html">GiftMyWay</a>
+          </h1>
+        </div>
+        <ul class="nav-links desktop-menu">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
             <a href="dashboard.html">Dashboard</a>
+          </li>
+          <li>
+            <a href="#">Gift By Type</a>
+          </li>
+          <li>
             <a href="cart.html">Cart</a>
-        </nav>
+          </li>
+        </ul>
+        <ul class="nav-links mobile-menu" id="mobileMenu">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="dashboard.html">Dashboard</a>
+          </li>
+          <li>
+            <a href="#">Gift By Type</a>
+          </li>
+          <li>
+            <a href="cart.html">Cart</a>
+          </li>
+          <input type="text" id="searchMenu" placeholder="Search products..." />
+        </ul>
+        <div class="right-side">
+          <input type="text" id="search" placeholder="Search products..." />
+          <div id="menu"><i class="fa-solid fa-bars"></i></div>
+        </div>
+      </nav>
     </header>
-    <img src="images/gift.jpg">
-    <nav>
-        <h1 text-align="center">Product Categories</h1><br>
-        <button><a href="#men" class="scroll-link">Gifts for Men</a></button>
-        <button><a href="#women" class="scroll-link">Gifts for Women</a></button>
-        <button><a href="#kids" class="scroll-link">Gifts for Kids</a></button>
-        <button><a href="#customize" class="scroll-link">Customize Your Gift</a></button>
-        <br><br>
-        <br><br>
-    </nav>
-    <b>
-    <!-- Gifts for Men Section -->
-    <section id="men" class="gift-section">
-        <h2>Gifts for Men</h2>
-        <div class="gift-card"><img src="images/watch.jpg">Smartwatches</div>
-        <div class="gift-card"><img src="images/wallet.webp">Leather Wallets</div>
-        <div class="gift-card"><img src="images/perf.webp">Perfumes</div>
-        <div class="gift-card"><img src="images/laptop.jpeg">Laptop Bags</div>
-        <div class="gift-card"><img src="images/wine.jpg">Wine Sets</div>
-        <!-- More gift items... -->
-    </section>
+    <!-- section wrapper -->
+    <section class="gift-category-section">
+      <h2 class="category-title">Explore by Occasion</h2>
+      <div class="gift-carousel">
+        <button class="carousel-btn left">&#10094;</button>
 
-    <!-- Gifts for Women Section -->
-    <section id="women" class="gift-section">
-        <h2>Gifts for Women</h2>
-        <div class="gift-card"><img src="images/skin.jpg">Skincare Set</div>
-        <div class="gift-card"><img src="images/jewel.webp">Jewelery</div>
-        <div class="gift-card"><img src="images/handbags.jpg">Handbags and Clutches</div>
-        <div class="gift-card"><img src="images/bracelet.jpeg">Bracelets</div>
-        <div class="gift-card"><img src="images/candles.jpg">Scented Candles</div>
-        <!-- More gift items... -->
-    </section>
+        <div class="gift-track">
+          <div class="gift-category">
+            <img src="images/birthdayGiftIcon.png" alt="Birthday Gift" />
+          </div>
+          <div class="gift-category">
+            <img src="images/anniversaryGiftIcon.webp" alt="Anniversary Gift" />
+          </div>
+          <div class="gift-category" style="margin-top: 4px">
+            <img
+              src="images/foreverRoseIcon.webp"
+              alt="Forever Rose"
+              style="width: 160px; height: 160px"
+            />
+          </div>
+          <div class="gift-category">
+            <img src="images/woodenIcon.avif" alt="Wooden Engraved" />
+          </div>
+          <div class="gift-category">
+            <img src="images/flowerCakeIcon.avif" alt="Flowers & Cake" />
+          </div>
+          <div class="gift-category">
+            <img src="images/personalizedGift.avif" alt="personalized Gift" />
+          </div>
+          <div class="gift-category">
+            <img src="images/hatkeGiftIcon.webp" alt="hatke gift" />
+          </div>
+        </div>
 
-    <!-- Gifts for Kids Section -->
-    <section id="kids" class="gift-section">
-        <h2>Gifts for Kids</h2>
-        <div class="gift-card"><img src="images/lego.jpg">LEGO Set</div>
-        <div class="gift-card"><img src="images/softtoys.jpg">Soft Toys</div>
-        <div class="gift-card"><img src="images/puzzle.jpg">Puzzle Game</div>
-        <div class="gift-card"><img src="images/art.jpg">Art Supplies</div>
-        <div class="gift-card"><img src="images/sportd.jpg">Sports Supplies</div>
-        <!-- More gift items... -->
+        <button class="carousel-btn right">&#10095;</button>
+      </div>
     </section>
+    <!-- img carousel -->
 
-    <!-- Customize Your Gift Section -->
-    <section id="customize" class="gift-section">
-        <h2>Customize Your Gift</h2>
-        <p>Create a unique, personalized gift for that special someone. Choose items, add messages, and more!</p>
-        <button onclick="alert('Customize Gift feature coming soon!')">Get Started</button>
-    </section>
+    <div class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/first1.webp" class="d-block w-100" alt="Slide 1" />
+        </div>
+        <div class="carousel-item">
+          <img src="images/first2.webp" class="d-block w-100" alt="Slide 2" />
+        </div>
+        <div class="carousel-item">
+          <img src="images/first3.webp" class="d-block w-100" alt="Slide 3" />
+        </div>
+        <div class="carousel-item">
+          <img src="images/first4.webp" class="d-block w-100" alt="Slide 4" />
+        </div>
+        <div class="carousel-item">
+          <img src="images/gift.jpg" class="d-block w-100" alt="Slide 5" />
+        </div>
+      </div>
+
+      <button class="carousel-control-prev">&#10094;</button>
+      <button class="carousel-control-next">&#10095;</button>
+
+      <div class="carousel-indicators">
+        <button class="active"></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+
+
+      <section class="category-section">
+  <h1>Product Categories</h1>
+
+  <div class="category-card-container">
+
+    <a href="giftsformen.html" class="category-card">
+      <img src="images/young-man.png" alt="Men Gift Icon">
+      <h2>Gifts for Men</h2>
+    </a>
+
+    <a href="giftsforwomen.html" class="category-card">
+      <img src="images/woman.png" alt="Women Gift Icon">
+      <h2>Gifts for Women</h2>
+    </a>
+
+    <a href="giftsforkids.html" class="category-card">
+      <img src="images/children.png" alt="Kids Gift Icon">
+      <h2>Gifts for Children</h2>
+    </a>
+
+  </div>
+</section>
+
+
+  
+
+      
+ <section id="customize" class="customize-section">
+  <div class="customize-card">
+    
+    <!-- Modern Gift SVG Icon -->
+    <div class="icon-box">
+      <svg width="65" height="65" viewBox="0 0 24 24" fill="none">
+        <path d="M12 22v-7m0 0H4v7h16v-7h-8zM4 10h16v5H4v-5zM4 10h16L19 8H5l-1 2z" 
+              stroke="#E06A6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.5 8C7 8 4 5.5 4 4c0-1.5 2-2.5 4-1 2 1.5 1.5 5 1.5 5zM14.5 8c2.5 0 5.5-2.5 5.5-4 0-1.5-2-2.5-4-1-2 1.5-1.5 5-1.5 5z"
+              stroke="#E06A6A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h2>Customize Your Gift</h2>
+
+    <p>
+      Craft a personalized gift that reflects emotion, style, and uniqueness.  
+      Choose items, add messages, select packaging, and create something  
+      truly unforgettable.
+    </p>
+
+    <button class="custom-btn">Start Customizing </button>
+
+  </div>
+</section>
+
+
     </b>
     <script src="js/homepage.js"></script>
-</body>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

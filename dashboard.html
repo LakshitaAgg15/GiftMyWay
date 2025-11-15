@@ -5,78 +5,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <link rel="stylesheet" href="css/home.css">
+    <!DOCTYPE html>
+<style>
+:root {
+    --primary-color: #f28888;   
+    --secondary-color: #e0edf7; 
+    --primary-text: #000000;    
+    --primary-bg: #ff6f61;   
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--primary-color);
+    color: white;
+    font-family: var(--font-family);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+header nav a:hover {
+    background: var(--primary-bg);
+    text-decoration: none;
+}
+
+/* --- Dashboard Container --- */
+.dashboard-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 30px auto;
+    font-family: var(--font-family);
+    color: var(--primary-text);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* --- Profile Card --- */
+.profile-section {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--secondary-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    gap: 30px;
+    align-items: center;
+}
+
+.profile-photo img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+}
+
+.profile-info {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #000;
+}
+
+.profile-info p strong {
+    font-weight: 600;
+    color: #000;
+}
+
+/* Edit Profile Button */
+.edit-profile {
+    text-align: center;
+}
+
+.edit-profile-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 14px 36px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.edit-profile-btn:hover {
+    background: var(--primary-bg);
+}
+
+/* --- Order History --- */
+.order-history {
+    background: var(--secondary-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.order-history h3 {
+    margin-top: 0;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #000; /* all table text black */
+}
+
+th {
+    background: #d96f6f; 
+    color: rgb(238, 104, 104);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background: #ffdede; 
+}
+
+/* --- Responsive --- */
+@media(max-width: 900px) {
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-photo img {
+        margin-bottom: 15px;
+    }
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>User Dashboard</h1>
-        <nav>
-            <a href="homepage.html">Home</a>
-            <a href="#logout">Logout</a>
-        </nav>
-    </header>
 
-    <!-- Dashboard Container -->
-    <div class="dashboard-container">
-        
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <div class="profile-info">
-                <h2>Riya Sharma</h2>
-                
-                <p>Email: riyasharma112@gmail.com</p>
-                <p>Phone: 9854125741</p>
-                <p>Gender: Female</p>
-                <p>Address: H-55,Kashmere Gate,New Delhi </p>
-            </div>
-            <div class="profile-photo">
-                <img src="images/user.jpg" alt="User Photo">
-            </div>
+<header>
+    <h1>User Dashboard</h1>
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="#logout">Logout</a>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+    <!-- Profile Card -->
+    <div class="profile-section">
+        <div class="profile-photo">
+            <img src="images/user.jpg" alt="User Photo">
+        </div>
+        <div class="profile-info">
+            <h2>Riya Sharma</h2>
+            <p><strong>Email:</strong> riyasharma112@gmail.com</p>
+            <p><strong>Phone:</strong> 9854125741</p>
+            <p><strong>Gender:</strong> Female</p>
+            <p><strong>Address:</strong> H-55, Kashmere Gate, New Delhi</p>
         </div>
     </div>
+
     <!-- Edit Profile Button -->
     <div class="edit-profile">
         <a href="editprofile.html" class="edit-profile-btn">Edit Profile</a>
     </div>
 
-    <div class="dashboard-container">
-        <!-- Order History Section -->
-        <section class="order-history">
-            <h3>Order History</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10234</td>
-                        <td>2024-09-15</td>
-                        <td>Shipped</td>
-                        <td>5000.00</td>
-                    </tr>
-                    <tr>
-                        <td>10233</td>
-                        <td>2024-08-10</td>
-                        <td>Delivered</td>
-                        <td>755.00</td>
-                    </tr>
-                    <tr>
-                        <td>10232</td>
-                        <td>2024-07-22</td>
-                        <td>Pending</td>
-                        <td>500.00</td>
-                    </tr>
-                    <!-- More orders... -->
-                </tbody>
-            </table>
-        </section>
-
-        
-    </div>
+    <!-- Order History -->
+    <section class="order-history">
+        <h3>Order History</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10234</td>
+                    <td>2024-09-15</td>
+                    <td>Shipped</td>
+                    <td>5000.00</td>
+                </tr>
+                <tr>
+                    <td>10233</td>
+                    <td>2024-08-10</td>
+                    <td>Delivered</td>
+                    <td>755.00</td>
+                </tr>
+                <tr>
+                    <td>10232</td>
+                    <td>2024-07-22</td>
+                    <td>Pending</td>
+                    <td>500.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
 
 </body>
 </html>
