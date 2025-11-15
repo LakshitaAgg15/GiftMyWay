@@ -11,10 +11,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    /> -->
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -130,65 +126,62 @@
         <button></button>
       </div>
     </div>
-    <nav>
-      <h1 text-align="center">Product Categories</h1>
-      <br />
-      <button><a href="#men" class="scroll-link">Gifts for Men</a></button>
-      <button><a href="#women" class="scroll-link">Gifts for Women</a></button>
-      <button><a href="#kids" class="scroll-link">Gifts for Kids</a></button>
-      <button>
-        <a href="#customize" class="scroll-link">Customize Your Gift</a>
-      </button>
-      <br /><br />
-      <br /><br />
-    </nav>
-    <b>
-      <!-- Gifts for Men Section -->
-      <section id="men" class="gift-section">
-        <h2>Gifts for Men</h2>
-        <div class="gift-card"><img src="watch.jpg" />Smartwatches</div>
-        <div class="gift-card"><img src="wallet.webp" />Leather Wallets</div>
-        <div class="gift-card"><img src="perf.webp" />Perfumes</div>
-        <div class="gift-card"><img src="laptop.jpeg" />Laptop Bags</div>
-        <div class="gift-card"><img src="wine.jpg" />Wine Sets</div>
-        <!-- More gift items... -->
-      </section>
 
-      <!-- Gifts for Women Section -->
-      <section id="women" class="gift-section">
-        <h2>Gifts for Women</h2>
-        <div class="gift-card"><img src="skin.jpg" />Skincare Set</div>
-        <div class="gift-card"><img src="jewel.webp" />Jewelery</div>
-        <div class="gift-card">
-          <img src="handbags.jpg" />Handbags and Clutches
-        </div>
-        <div class="gift-card"><img src="bracelet.jpeg" />Bracelets</div>
-        <div class="gift-card"><img src="candles.jpg" />Scented Candles</div>
-        <!-- More gift items... -->
-      </section>
 
-      <!-- Gifts for Kids Section -->
-      <section id="kids" class="gift-section">
-        <h2>Gifts for Kids</h2>
-        <div class="gift-card"><img src="lego.jpg" />LEGO Set</div>
-        <div class="gift-card"><img src="softtoys.jpg" />Soft Toys</div>
-        <div class="gift-card"><img src="puzzle.jpg" />Puzzle Game</div>
-        <div class="gift-card"><img src="art.jpg" />Art Supplies</div>
-        <div class="gift-card"><img src="sportd.jpg" />Sports Supplies</div>
-        <!-- More gift items... -->
-      </section>
+      <section class="category-section">
+  <h1>Product Categories</h1>
 
-      <!-- Customize Your Gift Section -->
-      <section id="customize" class="gift-section">
-        <h2>Customize Your Gift</h2>
-        <p>
-          Create a unique, personalized gift for that special someone. Choose
-          items, add messages, and more!
-        </p>
-        <button onclick="alert('Customize Gift feature coming soon!')">
-          Get Started
-        </button>
-      </section>
+  <div class="category-card-container">
+
+    <a href="giftsformen.html" class="category-card">
+      <img src="assets/young-man.png" alt="Men Gift Icon">
+      <h2>Gifts for Men</h2>
+    </a>
+
+    <a href="giftsforwomen.html" class="category-card">
+      <img src="assets/woman.png" alt="Women Gift Icon">
+      <h2>Gifts for Women</h2>
+    </a>
+
+    <a href="giftsforkids.html" class="category-card">
+      <img src="assets/children.png" alt="Kids Gift Icon">
+      <h2>Gifts for Children</h2>
+    </a>
+
+  </div>
+</section>
+
+
+  
+
+      
+ <section id="customize" class="customize-section">
+  <div class="customize-card">
+    
+    <!-- Modern Gift SVG Icon -->
+    <div class="icon-box">
+      <svg width="65" height="65" viewBox="0 0 24 24" fill="none">
+        <path d="M12 22v-7m0 0H4v7h16v-7h-8zM4 10h16v5H4v-5zM4 10h16L19 8H5l-1 2z" 
+              stroke="#E06A6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.5 8C7 8 4 5.5 4 4c0-1.5 2-2.5 4-1 2 1.5 1.5 5 1.5 5zM14.5 8c2.5 0 5.5-2.5 5.5-4 0-1.5-2-2.5-4-1-2 1.5-1.5 5-1.5 5z"
+              stroke="#E06A6A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h2>Customize Your Gift</h2>
+
+    <p>
+      Craft a personalized gift that reflects emotion, style, and uniqueness.  
+      Choose items, add messages, select packaging, and create something  
+      truly unforgettable.
+    </p>
+
+    <button class="custom-btn">Start Customizing </button>
+
+  </div>
+</section>
+
+
     </b>
     <script src="homepage.js"></script>
     <!-- Bootstrap JS -->
