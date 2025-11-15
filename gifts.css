@@ -154,7 +154,38 @@
   }
 }
 
-/* gifts for men */
-.light-pink-bg {
-  background-color: #FFC4C4;
+
+.gift-section {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.gift-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.gift-card {
+  display: inline-block;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 150px;
+  margin: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.gift-card img {
+  position: relative;
+  height: 150px;
+  width: 150px;
+}
+.gift-card:hover {
+  background-color: #ffebd8;
+  transition: background-color 0.3s;
 }
