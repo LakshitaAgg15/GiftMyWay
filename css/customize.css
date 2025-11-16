@@ -1,9 +1,5 @@
-/* * STYLING FOR THE CUSTOMIZER PAGE
- */
-
-/* Main Layout */
 .customizer-wrapper {
-  background-color: #fdfdfd; /* A very light grey, almost white */
+  background-color: #fdfdfd;
   padding: 3rem 1rem;
 }
 
@@ -15,9 +11,8 @@
   gap: 2rem;
 }
 
-/* Form (Left Side) */
 .customizer-form {
-  flex: 2; /* Takes 2/3 of the space */
+  flex: 2; 
   min-width: 300px;
   background: #ffffff;
   padding: 2rem;
@@ -29,7 +24,7 @@
   font-size: 2rem;
   color: #333;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #E06A6A; /* Theme color from your SVG */
+  border-bottom: 2px solid #E06A6A; 
   padding-bottom: 0.5rem;
 }
 
@@ -55,13 +50,12 @@
   cursor: pointer;
 }
 
-/* Modern Inputs */
 input[type="checkbox"],
 input[type="radio"] {
   margin-right: 0.75rem;
   width: 1.2em;
   height: 1.2em;
-  accent-color: #E06A6A; /* Theme color */
+  accent-color: #E06A6A;
   cursor: pointer;
 }
 
@@ -81,7 +75,6 @@ textarea#gift-message:focus {
   box-shadow: 0 0 5px rgba(224, 106, 106, 0.5);
 }
 
-/* Hides label, but keeps it for screen readers */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -94,16 +87,14 @@ textarea#gift-message:focus {
   border-width: 0;
 }
 
-/* Preview (Right Side) */
 .customizer-preview {
-  flex: 1; /* Takes 1/3 of the space */
+  flex: 1; 
   min-width: 300px;
   background: #ffffff;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
   
-  /* Makes the preview stick while scrolling the form */
   position: sticky;
   top: 2rem;
 }
@@ -118,10 +109,9 @@ textarea#gift-message:focus {
   border-radius: 8px;
   min-height: 250px;
   padding: 1.5rem;
-  transition: all 0.4s ease; /* Animation for packaging change */
+  transition: all 0.4s ease;
 }
 
-/* Packaging Styles */
 .preview-box.classic-kraft {
   background: #f0e6d5;
   border: 2px dashed #bfae90;
@@ -130,14 +120,13 @@ textarea#gift-message:focus {
 .preview-box.premium-black {
   background: #333;
   border: 2px dashed #555;
-  color: #fff; /* Makes text inside visible */
+  color: #fff;
 }
 
 .preview-box.premium-black .preview-message {
   color: #eee;
 }
 
-/* Preview Content */
 .preview-items {
   list-style: none;
   padding-left: 0;
@@ -147,7 +136,6 @@ textarea#gift-message:focus {
 .preview-items li {
   font-size: 0.95rem;
   padding: 0.25rem 0;
-  /* Animation */
   opacity: 0;
   transform: translateX(-15px);
   animation: fadeInItem 0.4s forwards ease-out;
@@ -182,15 +170,33 @@ textarea#gift-message:focus {
   transition: all 0.3s ease;
 }
 
-/* Button Style (reusing .custom-btn) */
 .add-to-cart-btn {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 1rem; /* Make it a bit bigger */
+  background-color: #E06A6A;
+  color: #ffffff;
+  padding: 10px 20px;
   font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  
+  width: auto;
+  max-width: 200px;
+  display: block;
+  margin: 1rem auto 0 auto;
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  
+  border: none;
+  text-decoration: none;
 }
 
-/* Item Animation */
+.add-to-cart-btn:hover {
+  background-color: #d45a5a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 @keyframes fadeInItem {
   to {
     opacity: 1;
@@ -198,12 +204,11 @@ textarea#gift-message:focus {
   }
 }
 
-/* Responsive Layout */
 @media (max-width: 768px) {
   .customizer-container {
     flex-direction: column;
   }
   .customizer-preview {
-    position: static; /* Un-stick the preview on mobile */
+    position: static; 
   }
 }
