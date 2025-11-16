@@ -1,0 +1,209 @@
+/* * STYLING FOR THE CUSTOMIZER PAGE
+ */
+
+/* Main Layout */
+.customizer-wrapper {
+  background-color: #fdfdfd; /* A very light grey, almost white */
+  padding: 3rem 1rem;
+}
+
+.customizer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* Form (Left Side) */
+.customizer-form {
+  flex: 2; /* Takes 2/3 of the space */
+  min-width: 300px;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.customizer-form h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #E06A6A; /* Theme color from your SVG */
+  padding-bottom: 0.5rem;
+}
+
+.form-module {
+  margin-bottom: 2rem;
+}
+
+.form-module h3 {
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.form-group div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Modern Inputs */
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 0.75rem;
+  width: 1.2em;
+  height: 1.2em;
+  accent-color: #E06A6A; /* Theme color */
+  cursor: pointer;
+}
+
+textarea#gift-message {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea#gift-message:focus {
+  outline: none;
+  border-color: #E06A6A;
+  box-shadow: 0 0 5px rgba(224, 106, 106, 0.5);
+}
+
+/* Hides label, but keeps it for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Preview (Right Side) */
+.customizer-preview {
+  flex: 1; /* Takes 1/3 of the space */
+  min-width: 300px;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  
+  /* Makes the preview stick while scrolling the form */
+  position: sticky;
+  top: 2rem;
+}
+
+.customizer-preview h3 {
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.preview-box {
+  border-radius: 8px;
+  min-height: 250px;
+  padding: 1.5rem;
+  transition: all 0.4s ease; /* Animation for packaging change */
+}
+
+/* Packaging Styles */
+.preview-box.classic-kraft {
+  background: #f0e6d5;
+  border: 2px dashed #bfae90;
+}
+
+.preview-box.premium-black {
+  background: #333;
+  border: 2px dashed #555;
+  color: #fff; /* Makes text inside visible */
+}
+
+.preview-box.premium-black .preview-message {
+  color: #eee;
+}
+
+/* Preview Content */
+.preview-items {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.preview-items li {
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  /* Animation */
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: fadeInItem 0.4s forwards ease-out;
+}
+
+.preview-message {
+  font-style: italic;
+  color: #555;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1rem;
+  transition: color 0.4s ease;
+}
+
+.preview-summary {
+  margin-top: 1.5rem;
+  text-align: right;
+  border-top: 2px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.preview-summary h4 {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 500;
+}
+
+#total-cost {
+  color: #E06A6A;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Button Style (reusing .custom-btn) */
+.add-to-cart-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem; /* Make it a bit bigger */
+  font-size: 1.1rem;
+}
+
+/* Item Animation */
+@keyframes fadeInItem {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .customizer-container {
+    flex-direction: column;
+  }
+  .customizer-preview {
+    position: static; /* Un-stick the preview on mobile */
+  }
+}
