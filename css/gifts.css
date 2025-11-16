@@ -311,3 +311,45 @@
     border-radius: 25px;
     border: 1px solid #ccc;
 }
+
+/* Product Categories Bar */
+.product-categories {
+    display: flex;
+    justify-content: space-around; /* distributes items evenly */
+    align-items: center;
+    background-color: white; /* soft pink background */
+    padding: 15px 0;
+    overflow-x: auto; /* scroll if screen is too small */
+}
+
+.product-categories .category {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    flex: 0 0 auto; /* prevents shrinking */
+}
+
+.product-categories .category img {
+    width: 120px;   /* increased from 80px */
+    height: 120px;  /* increased from 80px */
+    object-fit: cover;
+    border-radius: 50%; /* keeps the images round */
+    transition: transform 0.3s;
+}
+
+
+.product-categories .category:hover img {
+    transform: scale(1.1);
+}
+
+.product-categories .category span {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6); /* semi-transparent background */
+    color: #fff;
+    font-size: 14px;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
