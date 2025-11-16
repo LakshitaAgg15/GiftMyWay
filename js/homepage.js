@@ -123,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // edit profile javascript
 
-
 document.getElementById("editProfileForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -144,4 +143,3 @@ document.getElementById("editProfileForm").addEventListener("submit", function(e
     // Here, you could add code to save the data to local storage, a database, or send it to an API
     alert("Profile updated successfully!");
 });
-
