@@ -1,215 +1,3 @@
-<<<<<<< HEAD:css/home.css
-
-img {
-    align-items: center;
-    width: 100%;
-    height: 500px;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-button{
-    /* background-image: url(gift.jpg); */
-    height:100px;
-    width:120px;
-    border-radius: 10px;
-    border-width: 2px;
-    padding: 2px;
-    border:none;
-    background-color: #cc4747;
-    color: beige;
-    margin-left: 120px;
-    margin-right: 120px;
-    
-}
-
-button:hover {
-    background-color: rgb(235, 63, 63);
-}
-
-body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #fbdbdb;
-}
-
-h1, h2 {
-    color: #444;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-/* Header & Navigation */
-header {
-    background-color: #ff6f61;
-    color: #fff;
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h1 {
-    margin: 0;
-    color: white;
-}
-
-header nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: bold;
-}
-
-header nav a:hover {
-    color: #ffebd8;
-}
-.scroll-link{
-    color: white;
-
-}
-.scroll-link:hover{
-    color: rgb(219, 198, 63);
-
-}
-/* Gift Sections */
-.gift-section {
-    padding: 2rem;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-}
-
-.gift-section h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 1.5rem;
-}
-
-.gift-card {
-    display: inline-block;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 150px;
-    margin: 0.5rem;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.gift-card img{
-    position: relative;
-    height:150px;
-    width: 150px;
-}
-.gift-card:hover {
-    background-color: #ffebd8;
-    transition: background-color 0.3s;
-}
-
-/* Customize Your Gift Section */
-#customize button {
-    background-color: #ff6f61;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-#customize button:hover {
-    background-color: #ff5a4d;
-}
-
-
-/* Dashboard Container */
-.dashboard-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* Profile Section */
-.profile-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-.profile-info h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.profile-info p {
-    color: #666;
-}
-
-.profile-photo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-}
-
-/* Order History Section */
-.order-history h3 {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.order-history table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.order-history th, .order-history td {
-    padding: 0.8rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.order-history th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-.order-history td {
-    color: #666;
-}
-
-/* Edit Profile Button */
-.edit-profile {
-    text-align: center;
-    margin-top: 1.5rem;
-}
-
-.edit-profile-btn {
-    background-color: #ff6f61;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    display: inline-block;
-
-}
-
-.edit-profile-btn:hover {
-    background-color: #ff5a4d;
-}
-=======
 @import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Dosis:wght@200..800&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Macondo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
 
 :root {
@@ -851,4 +639,141 @@ header {
 }
 
 
->>>>>>> main:home.css
+/* --- Testimonials Section --- */
+/* --- Testimonials Section --- */
+#testimonials {
+    background: linear-gradient(180deg, #F8D9DB, #FCEEEF); /* matches your section bg */
+    padding: 70px 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+#testimonials h2 {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #3A3A3A; /* same heading color as "Customize Your Gift" */
+}
+
+/* Subtitle */
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #6A6A6A; /* soft grey text */
+    margin-bottom: 45px;
+}
+
+/* Wrapper */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+/* Hide overflow */
+.testimonials-container {
+    overflow: hidden;
+}
+
+/* Track */
+.testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Slide */
+.testimonial-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Card */
+.testimonial-card {
+    background: #ffffff; /* same as Customize Your Gift card */
+    border-radius: 18px;
+    padding: 35px 38px;
+    box-shadow: 0 12px 28px rgba(242, 108, 99, 0.15); /* coral shadow */
+    text-align: left;
+    min-height: 330px;
+    border: 2px solid #FFE7EE; /* same pink as category cards */
+}
+
+/* Quote icon */
+.testimonial-card .quote-icon {
+    font-size: 2rem;
+    color: #F26C63; /* coral icon like your main icon */
+    margin-bottom: 18px;
+}
+
+/* Body text */
+.testimonial-text {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: #6A6A6A;
+}
+
+/* Author */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.testimonial-author img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-right: 18px;
+    border: 3px solid #FFD9E4; /* light rose ring */
+    object-fit: cover;
+}
+
+.testimonial-author h4 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    color: #3A3A3A; /* heading text color */
+}
+
+.testimonial-author p {
+    font-size: 0.9rem;
+    color: #6A6A6A;
+    margin: 2px 0 0;
+}
+
+/* Rating stars */
+.rating {
+    color: #FF746A; /* same as button coral */
+    margin-top: 18px;
+    font-size: 1.2rem;
+}
+
+/* --- Navigation Arrows --- */
+.testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #F26C63; /* coral */
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(242, 108, 99, 0.35);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.25s ease;
+}
+
+.testimonial-nav:hover {
+    background-color: #FF746A; /* bright coral on hover */
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Arrow positions */
+.testimonial-nav.prev { left: -40px; }
+.testimonial-nav.next { right: -30px; }
+
+
