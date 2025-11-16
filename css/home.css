@@ -640,8 +640,9 @@ header {
 
 
 /* --- Testimonials Section --- */
+/* --- Testimonials Section --- */
 #testimonials {
-    background-color: #FDF0F7; /* lighter pastel pink */
+    background: linear-gradient(180deg, #F8D9DB, #FCEEEF); /* matches your section bg */
     padding: 70px 0;
     text-align: center;
     overflow-x: hidden;
@@ -650,17 +651,17 @@ header {
 #testimonials h2 {
     font-weight: 700;
     margin-bottom: 12px;
-    color: #D85EBF; /* soft pink-purple */
+    color: #3A3A3A; /* same heading color as "Customize Your Gift" */
 }
 
 /* Subtitle */
 .section-subtitle {
     font-size: 1.1rem;
-    color: #B58BBF; /* muted soft lavender-pink */
+    color: #6A6A6A; /* soft grey text */
     margin-bottom: 45px;
 }
 
-/* Wrapper with arrows */
+/* Wrapper */
 .testimonials-wrapper {
     position: relative;
     max-width: 800px;
@@ -679,7 +680,7 @@ header {
     transition: transform 0.5s ease-in-out;
 }
 
-/* Each slide */
+/* Slide */
 .testimonial-slide {
     min-width: 100%;
     box-sizing: border-box;
@@ -688,31 +689,31 @@ header {
 
 /* Card */
 .testimonial-card {
-    background: #ffffff;
+    background: #ffffff; /* same as Customize Your Gift card */
     border-radius: 18px;
     padding: 35px 38px;
-    box-shadow: 0 12px 30px rgba(255, 182, 219, 0.25); /* soft pink glow */
+    box-shadow: 0 12px 28px rgba(242, 108, 99, 0.15); /* coral shadow */
     text-align: left;
     min-height: 330px;
-    border: 2px solid #F8CDEB; /* lighter soft pink border */
+    border: 2px solid #FFE7EE; /* same pink as category cards */
 }
 
 /* Quote icon */
 .testimonial-card .quote-icon {
     font-size: 2rem;
-    color: #D85EBF; /* pinkish purple */
+    color: #F26C63; /* coral icon like your main icon */
     margin-bottom: 18px;
 }
 
-/* Text */
+/* Body text */
 .testimonial-text {
     font-size: 1.08rem;
     line-height: 1.7;
     font-style: italic;
-    color: #555;
+    color: #6A6A6A;
 }
 
-/* Author section */
+/* Author */
 .testimonial-author {
     display: flex;
     align-items: center;
@@ -724,28 +725,26 @@ header {
     height: 65px;
     border-radius: 50%;
     margin-right: 18px;
-    border: 3px solid #F7C2E6; /* soft baby pink ring */
+    border: 3px solid #FFD9E4; /* light rose ring */
     object-fit: cover;
 }
 
-/* Name */
 .testimonial-author h4 {
     font-size: 1.15rem;
     font-weight: 600;
     margin: 0;
-    color: #D85EBF;
+    color: #3A3A3A; /* heading text color */
 }
 
-/* Role */
 .testimonial-author p {
     font-size: 0.9rem;
-    color: #8E7A8E;
+    color: #6A6A6A;
     margin: 2px 0 0;
 }
 
 /* Rating stars */
 .rating {
-    color: #ffb6c1; /* light pink stars */
+    color: #FF746A; /* same as button coral */
     margin-top: 18px;
     font-size: 1.2rem;
 }
@@ -755,25 +754,26 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #F4A8D6; /* pastel pink */
+    background: #F26C63; /* coral */
     border: none;
     border-radius: 50%;
     width: 48px;
     height: 48px;
     font-size: 1.2rem;
     color: #fff;
-    box-shadow: 0 5px 18px rgba(244, 168, 214, 0.45);
+    box-shadow: 0 5px 15px rgba(242, 108, 99, 0.35);
     cursor: pointer;
     z-index: 10;
     transition: all 0.25s ease;
 }
 
 .testimonial-nav:hover {
-    background-color: #E989C8; /* slightly deeper pink */
+    background-color: #FF746A; /* bright coral on hover */
     transform: translateY(-50%) scale(1.08);
 }
 
-/* Positioning */
+/* Arrow positions */
 .testimonial-nav.prev { left: -40px; }
 .testimonial-nav.next { right: -30px; }
+
 
