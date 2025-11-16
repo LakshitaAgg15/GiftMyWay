@@ -603,6 +603,25 @@ header {
   margin-bottom: 30px;
 }
 
+.custom-btn {
+  background-color: #E06A6A; 
+  color: #ffffff;        
+  padding: 10px 20px;      
+  border-radius: 8px;   
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;   
+  display: inline-block;  
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  max-width: 200px;
+  text-align: center;
+}
+
+.custom-btn:hover {
+  background-color: #c95d5d;
+  transform: translateY(-2px);
+}
+
 /* CTA Button */
 .customize-btn {
   background: linear-gradient(135deg, #ff4f8b, #d6246b);
