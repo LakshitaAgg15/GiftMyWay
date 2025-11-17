@@ -1,298 +1,743 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
     <!DOCTYPE html>
-<style>
-:root {
-    --primary-color: #f28888;   
-    --secondary-color: #e0edf7; 
-    --primary-text: #000000;    
-    --primary-bg: #ff6f61;   
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    <style>
+      :root {
+        --primary-color: #f28888;
+        --secondary-color: #e0edf7;
+        --primary-text: #000000;
+        --primary-bg: #ff6f61;
+        --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-/* --- Header --- */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: var(--primary-color);
-    color: white;
-    font-family: var(--font-family);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
+      /* --- Header --- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: var(--primary-color);
+        color: white;
+        font-family: var(--font-family);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      }
 
-header h1 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: 700;
-}
+      header h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 700;
+      }
 
-header nav {
-    display: flex;
-    gap: 20px;
-}
+      header nav {
+        display: flex;
+        gap: 20px;
+      }
 
-header nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 18px;
-    border-radius: 20px;
-    transition: 0.2s;
-}
+      header nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 20px;
+        transition: 0.2s;
+      }
 
-header nav a:hover {
-    background: var(--primary-bg);
-    text-decoration: none;
-}
+      header nav a:hover {
+        background: var(--primary-bg);
+        text-decoration: none;
+      }
 
-/* --- Dashboard Container --- */
-.dashboard-container {
-    width: 95%;
-    max-width: 1100px;
-    margin: 30px auto;
-    font-family: var(--font-family);
-    color: var(--primary-text);
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* --- Profile Card --- */
-.profile-section {
-    display: flex;
-    flex-wrap: wrap;
-    background: var(--secondary-color);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    gap: 30px;
-    align-items: center;
-}
-
-.profile-photo img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid #ccc;
-}
-
-.profile-info {
-    flex: 1 1 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.profile-info h2 {
-    margin: 0;
-    font-size: 30px;
-    font-weight: 700;
-    color: #000;
-}
-
-.profile-info p {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.6;
-    color: #000;
-}
-
-.profile-info p strong {
-    font-weight: 600;
-    color: #000;
-}
-
-/* Edit Profile Button */
-.edit-profile {
-    text-align: center;
-}
-
-.edit-profile-btn {
-    background: var(--primary-color);
-    color: white;
-    padding: 14px 36px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 17px;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.edit-profile-btn:hover {
-    background: var(--primary-bg);
-}
-
-/* --- Order History --- */
-.order-history {
-    background: var(--secondary-color);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-}
-
-.order-history h3 {
-    margin-top: 0;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 16px;
-}
-
-th, td {
-    padding: 14px 16px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-    color: #000; /* all table text black */
-}
-
-th {
-    background: #d96f6f; 
-    color: rgb(238, 104, 104);
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-tr:hover {
-    background: #ffdede; 
-}
-
-/* --- Responsive --- */
-@media(max-width: 900px) {
-    .profile-section {
+      /* --- Dashboard Container --- */
+      .dashboard-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 30px auto;
+        font-family: var(--font-family);
+        color: var(--primary-text);
+        display: flex;
         flex-direction: column;
+        gap: 30px;
+      }
+
+      /* --- Profile Card --- */
+      .profile-section {
+        display: flex;
+        flex-wrap: wrap;
+        background: var(--secondary-color);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        gap: 30px;
+        align-items: center;
+      }
+
+      .profile-photo img {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid #ccc;
+      }
+
+      .profile-info {
+        flex: 1 1 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .profile-info h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 700;
+        color: #000;
+      }
+
+      .profile-info p {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.6;
+        color: #000;
+      }
+
+      .profile-info p strong {
+        font-weight: 600;
+        color: #000;
+      }
+
+      /* Edit Profile Button */
+      .edit-profile {
         text-align: center;
-    }
+      }
 
-    .profile-photo img {
+      .edit-profile-btn {
+        background: var(--primary-color);
+        color: white;
+        padding: 14px 36px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 17px;
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      .edit-profile-btn:hover {
+        background: var(--primary-bg);
+      }
+
+      /* --- Order History --- */
+      .order-history {
+        background: var(--secondary-color);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .order-history h3 {
+        margin-top: 0;
+        font-size: 26px;
+        font-weight: 700;
         margin-bottom: 15px;
-    }
-}
-</style>
-</head>
-<body>
+      }
 
-<header>
-    <h1>User Dashboard</h1>
-    <nav>
-        <a href="homepage.html">Home</a>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+        color: #000; /* all table text black */
+      }
+
+      th {
+        background: #d96f6f;
+        color: rgb(238, 104, 104);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      tr:hover {
+        background: #ffdede;
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 900px) {
+        .profile-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .profile-photo img {
+          margin-bottom: 15px;
+        }
+      }
+      #editProfileForm {
+        padding: 0 !important;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      /* --- Modal Overlay --- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 1000;
+      }
+
+      .modal-overlay.hidden {
+        display: none;
+      }
+
+      /* --- Modal Box --- */
+      .modal {
+        background: #fbdbdb;
+        padding: 25px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 700px;
+        animation: fadeIn 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* --- Form Inputs --- */
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      .input-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .input-group input {
+        width: 80%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+
+      /* --- Modal Buttons --- */
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: #4b70f5;
+        color: #fff;
+        margin: 0 !important;
+      }
+      .btn-primary:hover {
+        background: #123edb;
+      }
+
+      .btn-secondary {
+        margin: 0 !important;
+        background: #f52a2a;
+      }
+
+      /* --- RESPONSIVE --- */
+
+      @media (max-width: 843px) {
+        .modal {
+          padding: 20px;
+          /* max-width: 100% */
+
+          max-width: 500px;
+          margin-right: 34px;
+        }
+
+        .modal-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          text-align: center;
+          margin: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>User Dashboard</h1>
+      <nav>
+        <a href="index.html">Home</a>
+
         <a href="#logout">Logout</a>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<div class="dashboard-container">
-    <!-- Profile Card -->
-    <div class="profile-section">
+    <div class="dashboard-container">
+      <!-- Profile Card -->
+      <div class="profile-section">
         <div class="profile-photo">
-            <img src="images/user.jpg" alt="User Photo">
+          <img src="images/user.jpg" alt="User Photo" />
         </div>
         <div class="profile-info">
-            <h2>Riya Sharma</h2>
-            <p><strong>Email:</strong> riyasharma112@gmail.com</p>
-            <p><strong>Phone:</strong> 9854125741</p>
-            <p><strong>Gender:</strong> Female</p>
-            <p><strong>Address:</strong> H-55, Kashmere Gate, New Delhi</p>
+          <h2 id="dashName">Riya Sharma</h2>
+          <p id="dashEmail"><strong>Email:</strong> riyasharma112@gmail.com</p>
+          <p id="dashPhone"><strong>Phone:</strong> 9854125741</p>
+          <p id="dashGender"><strong>Gender:</strong> Female</p>
+          <p id="dashAddress">
+            <strong>Address:</strong> H-55, Kashmere Gate, New Delhi
+          </p>
         </div>
-    </div>
+      </div>
 
-    <!-- Edit Profile Button -->
-    <div class="edit-profile">
-        <a href="editprofile.html" class="edit-profile-btn">Edit Profile</a>
-    </div>
+      <!-- Edit Profile Button -->
+      <div class="edit-profile">
+        <button id="editProfileBtn">Edit Profile</button>
+      </div>
+      <!-- Edit Profile Modal -->
+      <div id="editProfileModal" class="modal-overlay hidden">
+        <div class="modal">
+          <h2>Edit Profile</h2>
 
-    <!-- Order History -->
-    <section class="order-history">
+          <form id="editProfileForm">
+            <div class="input-group">
+              <label>Name</label>
+              <input
+                type="text"
+                id="editName"
+                required
+                placeholder="Enter Your Name"
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Email</label>
+              <input
+                type="email"
+                id="editEmail"
+                required
+                placeholder="Enter Your Email"
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Phone</label>
+              <input
+                type="text"
+                id="editPhone"
+                required
+                placeholder="Enter Your Phone Number"
+              />
+            </div>
+            <div class="input-group">
+              <label>Gender</label>
+              <input
+                type="text"
+                id="editGender"
+                required
+                placeholder="Enter Your Gender"
+              />
+            </div>
+            <div class="input-group">
+              <label>Address</label>
+              <input
+                type="text"
+                id="editAddress"
+                required
+                placeholder="Enter Your Address"
+              />
+            </div> 
+
+            <div class="modal-actions">
+              <button type="button" id="cancelEdit" class="btn-secondary">
+                Cancel
+              </button>
+              <button type="submit" id="saveChangesBtn" class="btn-primary">
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Order History -->
+      <section class="order-history">
         <h3>Order History</h3>
         <table>
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>10234</td>
-                    <td>2024-09-15</td>
-                    <td>Shipped</td>
-                    <td>5000.00</td>
-                </tr>
-                <tr>
-                    <td>10233</td>
-                    <td>2024-08-10</td>
-                    <td>Delivered</td>
-                    <td>755.00</td>
-                </tr>
-                <tr>
-                    <td>10232</td>
-                    <td>2024-07-22</td>
-                    <td>Pending</td>
-                    <td>500.00</td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10234</td>
+              <td>2024-09-15</td>
+              <td>Shipped</td>
+              <td>5000.00</td>
+            </tr>
+            <tr>
+              <td>10233</td>
+              <td>2024-08-10</td>
+              <td>Delivered</td>
+              <td>755.00</td>
+            </tr>
+            <tr>
+              <td>10232</td>
+              <td>2024-07-22</td>
+              <td>Pending</td>
+              <td>500.00</td>
+            </tr>
+          </tbody>
         </table>
-    </section>
-</div>
+      </section>
+    </div>
 
-<footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>GiftMyWay</h3>
-                <p>Your one-stop shop for unique and personalized gifts. Find the perfect present for men, women, kids, and every special occasion.</p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="#customize">Customize a Gift</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Gift Lane, New Delhi, India</p>
-                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> support@giftmyway.com</p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <p>Get a-glimpse of our new arrivals and special offers.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                </div>
-            </div>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>GiftMyWay</h3>
+          <p>
+            Your one-stop shop for unique and personalized gifts. Find the
+            perfect present for men, women, kids, and every special occasion.
+          </p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 GiftMyWay. All rights reserved.</p>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="#customize">Customize a Gift</a></li>
+          </ul>
         </div>
+
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 123 Gift Lane, New Delhi,
+            India
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> support@giftmyway.com</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <p>Get a-glimpse of our new arrivals and special offers.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Pinterest"
+              ><i class="fab fa-pinterest-p"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 GiftMyWay. All rights reserved.</p>
+      </div>
     </footer>
 
+    <script type="module">
+      import {
+        doc,
+        getDoc,
+        updateDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-</body>
+      // DOM references
+      const editBtn = document.getElementById("editProfileBtn");
+      const modal = document.getElementById("editProfileModal");
+      const cancelEdit = document.getElementById("cancelEdit");
+      const saveChangesBtn = document.getElementById("saveChangesBtn");
+
+      const editName = document.getElementById("editName");
+      const editEmail = document.getElementById("editEmail");
+      const editPhone = document.getElementById("editPhone");
+      const editGender = document.getElementById("editGender");
+      const editAddress = document.getElementById("editAddress");
+
+      const dashName = document.getElementById("dashName");
+      const dashEmail = document.getElementById("dashEmail");
+      const dashPhone = document.getElementById("dashPhone");
+      const dashGender = document.getElementById("dashGender");
+      const dashAddress = document.getElementById("dashAddress");
+
+      const editProfileForm = document.getElementById("editProfileForm"); // <-- FIX: declare this
+
+      // firebase placeholders (may stay undefined if firebaseConfig.js missing)
+      let auth = null;
+      let db = null;
+
+      // init function to wire up handlers. Called after attempting to import firebaseConfig.
+      function init() {
+        // If Firebase auth exists, try populate from Firestore on auth state change
+        if (auth && typeof auth.onAuthStateChanged === "function") {
+          auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+              // no firebase user; maybe fallback to localStorage
+              loadFromLocal();
+              return;
+            }
+            try {
+              const docRef = doc(db, "users", user.uid);
+              const snapshot = await getDoc(docRef);
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+                fillDashboard(data);
+              } else {
+                loadFromLocal();
+              }
+            } catch (err) {
+              console.error("Error reading Firestore:", err);
+              loadFromLocal();
+            }
+          });
+        } else {
+          // no firebase: load values from DOM or localStorage
+          loadFromLocal();
+        }
+
+        // Open modal and prefill
+        editBtn.addEventListener("click", async () => {
+          // If firebase auth available use currentUser, otherwise prefill from page/local
+          if (auth && auth.currentUser) {
+            try {
+              const docRef = doc(db, "users", auth.currentUser.uid);
+              const snapshot = await getDoc(docRef);
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+                editName.value = data.name || "";
+                editEmail.value = data.email || "";
+                editPhone.value = data.phone || "";
+                editGender.value = data.gender || "";
+                editAddress.value = data.address || "";
+              } else {
+                loadFormFromLocal();
+              }
+            } catch (err) {
+              console.error("Error fetching user doc:", err);
+              loadFormFromLocal();
+            }
+          } else {
+            loadFormFromLocal();
+          }
+          modal.classList.remove("hidden");
+        });
+
+        // cancel
+        cancelEdit.addEventListener("click", () => {
+          modal.classList.add("hidden");
+        });
+
+        // submit
+        editProfileForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          saveChangesBtn.textContent = "Saving...";
+          saveChangesBtn.disabled = true;
+
+          const updatedData = {
+            name: editName.value.trim(),
+            email: editEmail.value.trim(),
+            phone: editPhone.value.trim(),
+            gender: editGender.value.trim(),
+            address: editAddress.value.trim(),
+          };
+
+          try {
+            if (auth && auth.currentUser) {
+              // Save to Firestore
+              const docRef = doc(db, "users", auth.currentUser.uid);
+              await updateDoc(docRef, updatedData);
+            } else {
+              // Fallback: save to localStorage for local testing
+              localStorage.setItem(
+                "gmw_user_profile",
+                JSON.stringify(updatedData)
+              );
+            }
+
+            // Update dashboard
+            fillDashboard(updatedData);
+            modal.classList.add("hidden");
+          } catch (err) {
+            console.error("Error saving profile:", err);
+            alert("Could not save profile. Check console for details.");
+          } finally {
+            saveChangesBtn.textContent = "Save Changes";
+            saveChangesBtn.disabled = false;
+          }
+        });
+      }
+
+      // Helper: fill dashboard fields (keeps label if present)
+      function fillDashboard(data = {}) {
+        if (data.name !== undefined) dashName.textContent = data.name;
+        if (data.email !== undefined)
+          dashEmail.innerHTML = `<strong>Email:</strong> ${data.email}`;
+        if (data.phone !== undefined)
+          dashPhone.innerHTML = `<strong>Phone:</strong> ${data.phone}`;
+        if (data.gender !== undefined)
+          dashGender.innerHTML = `<strong>Gender:</strong> ${data.gender}`;
+        if (data.address !== undefined)
+          dashAddress.innerHTML = `<strong>Address:</strong> ${data.address}`;
+      }
+
+      // Helper: load from localStorage or DOM
+      function loadFromLocal() {
+        const local = localStorage.getItem("gmw_user_profile");
+        if (local) {
+          try {
+            const obj = JSON.parse(local);
+            fillDashboard(obj);
+          } catch (_) {
+            // parse failed — fallback to existing DOM
+          }
+        } else {
+          // nothing in localStorage: leave existing DOM content (already in HTML)
+          // or extract text from DOM to normalized form
+          const currName = dashName.textContent.trim();
+          // try to extract email and phone values after colon
+          const emailText = dashEmail.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const phoneText = dashPhone.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const genderText = dashGender.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const addressText = dashAddress.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const obj = {
+            name: currName || "",
+            email: emailText || "",
+            phone: phoneText || "",
+            gender: genderText || "",
+            address: addressText || "",
+          };
+          // store as baseline
+          localStorage.setItem("gmw_user_profile", JSON.stringify(obj));
+        }
+      }
+
+      function loadFormFromLocal() {
+        const local = localStorage.getItem("gmw_user_profile");
+        if (local) {
+          try {
+            const obj = JSON.parse(local);
+            editName.value = obj.name || "";
+            editEmail.value = obj.email || "";
+            editPhone.value = obj.phone || "";
+            editGender.value = obj.gender || "";
+            editAddress.value = obj.address || "";
+            return;
+          } catch (_) {}
+        }
+        // fallback: take current page text
+        editName.value = dashName.textContent.trim() || "";
+        editEmail.value =
+          dashEmail.textContent.split(":").slice(1).join(":").trim() || "";
+        editPhone.value =
+          dashPhone.textContent.split(":").slice(1).join(":").trim() || "";
+        editGender.value =
+          dashGender.textContent.split(":").slice(1).join(":").trim() || "";
+        editAddress.value =
+          dashAddress.textContent.split(":").slice(1).join(":").trim() || "";
+      }
+
+      // Try dynamic import of firebaseConfig (so missing file doesn't break the module)
+      (async () => {
+        try {
+          const mod = await import("./firebaseConfig.js");
+          auth = mod.auth;
+          db = mod.db;
+          console.log("Firebase config loaded.");
+        } catch (err) {
+          console.warn(
+            "firebaseConfig.js not found or failed to load — continuing without Firebase.",
+            err
+          );
+        } finally {
+          init();
+        }
+      })();
+    </script>
+  </body>
 </html>
 

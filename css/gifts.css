@@ -305,6 +305,313 @@
     }
 }
 
+.gift-section {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.gift-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 111, 97, 0.03) 0%, transparent 70%);
+  animation: sectionGlow 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sectionGlow {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(30px, 30px) rotate(360deg); }
+}
+.gift-section h2 {
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.gift-section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6f61, #e63946, #ff6f61);
+  border-radius: 2px;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.gift-section h2:hover {
+  transform: scale(1.05);
+  color: #e63946;
+  text-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+}
+
+.gift-section h2:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* --- Gift Card 3D Pop-out Effect --- */
+.gift-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+/* Gradient overlay on hover */
+.gift-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 111, 97, 0.1), rgba(230, 57, 70, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.gift-card:hover::before {
+  opacity: 1;
+}
+
+/* Shine effect on hover */
+.gift-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 0.6s ease;
+}
+
+.gift-card:hover::after {
+  transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
+/* Main hover effect */
+.gift-card:hover {
+  transform: translateY(-15px) scale(1.08) rotateX(5deg);
+  background-color: #fff5f2;
+  box-shadow: 
+    0 20px 40px rgba(230, 57, 70, 0.3),
+    0 0 0 4px rgba(255, 111, 97, 0.2),
+    0 0 20px rgba(255, 111, 97, 0.4);
+  z-index: 10;
+}
+
+/* --- Gift Card Image Enhanced Animation --- */
+.gift-card img {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+}
+
+.gift-card:hover img {
+  transform: scale(1.15) translateY(-8px);
+  filter: brightness(1.1) saturate(1.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Gift Card Text Pop Effect --- */
+.gift-card {
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.gift-card:hover {
+  color: #e63946;
+  font-size: 1.05em;
+  letter-spacing: 0.5px;
+}
+
+/* --- Floating Badge Effect (NEW, SALE, etc.) --- */
+.gift-card[data-badge]::before {
+  content: attr(data-badge);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff6f61, #e63946);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 3;
+  box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+  animation: badgePulse 2s ease infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* --- Card Border Glow Animation --- */
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(255, 111, 97, 0.4);
+  }
+}
+
+.gift-card {
+  animation: borderGlow 3s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.gift-card:hover {
+  animation-play-state: running;
+}
+
+/* --- Staggered Card Animation on Page Load --- */
+.gift-card {
+  opacity: 0;
+  animation: cardFadeIn 0.6s ease forwards;
+}
+
+.gift-card:nth-child(1) { animation-delay: 0.1s; }
+.gift-card:nth-child(2) { animation-delay: 0.2s; }
+.gift-card:nth-child(3) { animation-delay: 0.3s; }
+.gift-card:nth-child(4) { animation-delay: 0.4s; }
+.gift-card:nth-child(5) { animation-delay: 0.5s; }
+.gift-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Add to Cart Button (if you add one) --- */
+.gift-card-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  background: linear-gradient(135deg, #ff6f61, #e63946);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 3;
+  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.gift-card:hover .gift-card-btn {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.gift-card-btn:hover {
+  transform: translateX(-50%) translateY(0) scale(1.1);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+}
+
+
+.gift-card:hover .gift-card-price {
+  transform: scale(1.15);
+  background: #e63946;
+  color: white;
+}
+
+/* --- Mouse Follow Glow Effect --- */
+.gift-section {
+  position: relative;
+}
+
+.gift-card {
+  --mouse-x: 0;
+  --mouse-y: 0;
+}
+
+.gift-card:hover {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 111, 97, 0.1),
+    transparent 40%
+  );
+}
+
+/* --- Ripple Click Effect --- */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.gift-card:active::before {
+  animation: ripple 0.6s ease-out;
+}
+
+/* --- Enhanced Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .gift-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(230, 57, 70, 0.25);
+  }
+  
+  .gift-card:hover img {
+    transform: scale(1.1) translateY(-5px);
+  }
+}
+
+/* --- Dark Mode Support (Optional) --- */
+@media (prefers-color-scheme: dark) {
+  .gift-section {
+    background-color: #fff9f9;
+  }
+  
+  .gift-section h2 {
+    color: #fff;
+  }
+  
+  .gift-card {
+    background-color: #ffffff;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  .gift-card:hover {
+    background-color: #ffffff;
+  }
+}
 .search-section input {
     padding: 10px 15px;
     font-size: 16px;
@@ -340,16 +647,30 @@
 
 .product-categories .category:hover img {
     transform: scale(1.1);
+    opacity:25%;
 }
 
 .product-categories .category span {
     position: absolute;
-    bottom: 0;
+    bottom: 7;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.6); /* semi-transparent background */
-    color: #fff;
-    font-size: 14px;
+    color: black;
+    font-size: 20px;
     padding: 3px 8px;
-    border-radius: 12px;
 }
+.category .hover-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 20px;
+  pointer-events: none; 
+}
+.category:hover .hover-text {
+  opacity: 1;
+}
+

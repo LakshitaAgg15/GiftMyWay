@@ -9,7 +9,7 @@
 
 button {
   /* background-image: url(gift.jpg); */
-  height: 100px;
+  height: 50px;
   width: 120px;
   border-radius: 10px;
   border-width: 2px;
@@ -30,6 +30,7 @@ body {
   color: #333;
   font-weight: 400;
   background-color: #fbdbdb;
+  overflow-x: hidden;
 }
 
 h1,
@@ -251,129 +252,6 @@ header {
   transform: translateY(-8px) scale(1.05);
 }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  border: 2px solid #ddd;
-  border-radius: 50%;
-  font-size: 2rem;
-  color: #e63946;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s ease;
-  z-index: 10;
-  opacity: 0;
-}
-.gift-carousel:hover .carousel-btn {
-  opacity: 1;
-}
-.carousel-btn:hover {
-  background: #e63946;
-  color: #fff;
-}
-
-.carousel-btn.left {
-  left: 10px;
-}
-.carousel-btn.right {
-  right: 10px;
-}
-
-/* ✅ Hide arrows on small screens */
-@media (max-width: 760px) {
-  .carousel-btn {
-    display: none;
-  }
-}
-
-/* img carousel */
-.carousel {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  border-radius: 10px;
-}
-
-.carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-  min-width: 100%;
-  user-select: none;
-}
-
-.carousel-item img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  height: 400px;
-  border-radius: 10px;
-}
-
-/* Controls */
-.carousel-control-prev,
-.carousel-control-next {
-  position: absolute;
-  top: 50%;
-  height: 50px !important;
-  width: 50px !important;
-  margin: 0 !important;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 20px;
-}
-
-.carousel-control-prev {
-  left: 10px;
-}
-.carousel-control-next {
-  right: 10px;
-}
-
-/* Indicators */
-.carousel-indicators {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1px;
-}
-
-.carousel-indicators button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-}
-
-.carousel-indicators button.active {
-  background: white;
-}
-
-.scroll-link {
-  color: white;
-}
-.scroll-link:hover {
-  color: rgb(219, 198, 63);
-}
 
 /* Gift Sections */
 .gift-section {
@@ -996,6 +874,680 @@ header {
   box-shadow: 0 6px 15px rgba(255, 0, 120, 0.35);
 }
 
+/* ========================================
+   ENHANCED HOVERING & BUTTON ANIMATIONS
+   ======================================== */
+
+/* --- Enhanced Button Animations --- */
+button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(204, 71, 71, 0.4);
+  background-color: rgb(235, 63, 63);
+}
+
+button:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 15px rgba(204, 71, 71, 0.3);
+}
+
+/* --- Carousel Button Pulse Animation --- */
+.carousel-btn {
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(230, 57, 70, 0.1);
+  }
+}
+
+.carousel-btn:hover {
+  animation: none;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* --- Gift Category Hover Enhancement --- */
+.gift-category {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gift-category::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #e63946, #ff6f61);
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+.gift-category:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.gift-category:hover img {
+  filter: brightness(0) saturate(100%) invert(45%) sepia(95%) 
+          saturate(2400%) hue-rotate(335deg) brightness(100%) contrast(95%);
+  transform: rotate(-5deg) scale(1.1);
+}
+
+/* --- Category Card 3D Hover Effect --- */
+.category-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 79, 139, 0.1), rgba(214, 36, 107, 0.1));
+  border-radius: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-card:hover::before {
+  opacity: 1;
+}
+
+.category-card:hover {
+  transform: translateY(-12px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3),
+              0 0 0 3px rgba(230, 57, 70, 0.3);
+}
+
+.category-card:hover h2 {
+  color: #e63946;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* --- Customize Button Enhanced Animation --- */
+.customize-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.customize-btn::before {
+  content: '✨';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.customize-btn:hover::before {
+  left: 15px;
+  opacity: 1;
+}
+
+.customize-btn:hover {
+  padding-left: 45px;
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 25px rgba(255, 0, 120, 0.45);
+  background: linear-gradient(135deg, #ff1a8b, #ff4f8b);
+}
+
+/* --- Gift Card Flip Effect --- */
+.gift-card {
+  position: relative;
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.gift-card::after {
+  content: 'View Details';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(230, 57, 70, 0.95);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.gift-card:hover {
+  transform: translateY(-10px) rotateY(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.gift-card:hover::after {
+  opacity: 1;
+}
+
+/* --- Carousel Control Enhanced Hover --- */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(230, 57, 70, 0.9);
+  transform: translateY(-50%) scale(1.2);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* --- Navigation Link Glow Effect --- */
+.nav-links li a {
+  position: relative;
+}
+
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* --- Footer Social Links Bounce --- */
+.social-links a {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-links a:hover {
+  transform: translateY(-8px) rotate(360deg) scale(1.2);
+  color: #ffebd8;
+  text-shadow: 0 5px 15px rgba(255, 235, 216, 0.5);
+}
+
+/* --- Edit Profile Button Wave Effect --- */
+.edit-profile-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.edit-profile-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.edit-profile-btn:hover::before {
+  left: 100%;
+}
+
+.edit-profile-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 90, 77, 0.4);
+  letter-spacing: 1px;
+}
+
+/* --- Search Bar Focus Animation --- */
+#search:focus,
+#searchMenu:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(89, 169, 210, 0.3),
+              rgba(121, 16, 8, 0.5) 0 4px 12px inset;
+}
+
+/* --- Testimonial Card Hover Lift --- */
+.testimonial-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(242, 108, 99, 0.25);
+  border-color: #F26C63;
+}
+
+/* --- Carousel Indicators Pulse --- */
+.carousel-indicators button {
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators button:hover {
+  transform: scale(1.4);
+  background: #ff6f61;
+  box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+}
+
+.carousel-indicators button.active {
+  animation: indicatorPulse 1.5s infinite;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+/* --- Logo Rotation on Hover --- */
+#giftLogo {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#giftLogo:hover {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 111, 97, 0.5);
+}
+
+/* --- Menu Icon Animation --- */
+#menu {
+  transition: all 0.3s ease;
+}
+
+#menu:hover {
+  transform: scale(1.2) rotate(90deg);
+  color: #ffebd8;
+}
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  animation: footerGlow 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes footerGlow {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(50px, 50px) rotate(360deg);
+  }
+}
+
+
+.footer-column {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.footer-column:hover {
+  transform: translateY(-8px);
+}
+
+.footer-column::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffebd8, #ffffff, #ffebd8);
+  transition: width 0.5s ease;
+}
+
+.footer-column:hover::after {
+  width: 100%;
+}
+
+.footer-column h3 {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-column h3::after {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.footer-column:hover h3 {
+  color: #ffebd8;
+  transform: translateX(5px);
+  text-shadow: 0 2px 10px rgba(255, 235, 216, 0.3);
+}
+
+.footer-column:hover h3::after {
+  width: 80px;
+  background: linear-gradient(90deg, #ffebd8, #ffffff);
+  box-shadow: 0 0 10px rgba(255, 235, 216, 0.5);
+}
+
+
+.footer-column p {
+  transition: all 0.3s ease;
+}
+
+.footer-column:hover p {
+  color: #ffffff;
+  transform: translateX(3px);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.footer-column ul li {
+  position: relative;
+  transition: all 0.3s ease;
+  padding-left: 0;
+}
+
+.footer-column ul li::before {
+  content: '→';
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  color: #ffebd8;
+  font-weight: bold;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.footer-column ul li:hover {
+  padding-left: 20px;
+  transform: translateX(5px);
+}
+
+.footer-column ul li:hover::before {
+  left: 0;
+  opacity: 1;
+}
+
+
+.footer-column ul li a {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.footer-column ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffebd8, #ffffff);
+  transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 0 5px rgba(255, 235, 216, 0.5);
+}
+
+.footer-column ul li a:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+  text-shadow: 0 0 10px rgba(255, 235, 216, 0.4);
+}
+
+.footer-column ul li a:hover::after {
+  width: 100%;
+}
+
+
+.social-links {
+  position: relative;
+}
+
+.social-links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 235, 216, 0.3);
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+}
+
+.social-links a:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.social-links a:hover {
+  background: rgba(255, 235, 216, 0.2);
+  transform: translateY(-10px) scale(1.15);
+  box-shadow: 0 10px 25px rgba(255, 235, 216, 0.4);
+}
+
+.social-links a:nth-child(1):hover {
+  background: rgba(59, 89, 152, 0.8); /* Facebook */
+  color: #fff;
+}
+
+.social-links a:nth-child(2):hover {
+  background: rgba(29, 161, 242, 0.8); /* Twitter */
+  color: #fff;
+}
+
+.social-links a:nth-child(3):hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Instagram */
+  color: #fff;
+}
+
+.social-links a:nth-child(4):hover {
+  background: rgba(189, 8, 28, 0.8); /* Pinterest */
+  color: #fff;
+}
+
+/* Social Icon Rotation Stagger */
+.social-links a:nth-child(1):hover {
+  animation: socialBounce 0.6s ease;
+}
+
+.social-links a:nth-child(2):hover {
+  animation: socialBounce 0.6s ease 0.1s;
+}
+
+.social-links a:nth-child(3):hover {
+  animation: socialBounce 0.6s ease 0.2s;
+}
+
+.social-links a:nth-child(4):hover {
+  animation: socialBounce 0.6s ease 0.3s;
+}
+
+@keyframes socialBounce {
+  0%, 100% {
+    transform: translateY(-10px) scale(1.15);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.2) rotate(5deg);
+  }
+}
+
+.footer-bottom {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffebd8, transparent);
+  transition: width 0.8s ease;
+}
+
+.site-footer:hover .footer-bottom::before {
+  width: 100%;
+}
+
+.footer-bottom p {
+  transition: all 0.3s ease;
+}
+
+.footer-bottom:hover p {
+  color: #ffffff;
+  transform: scale(1.05);
+  text-shadow: 0 2px 8px rgba(255, 235, 216, 0.3);
+}
+
+.footer-column p i {
+  display: inline-block;
+  margin-right: 8px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  color: #ffebd8;
+}
+
+.footer-column p:hover i {
+  transform: scale(1.3) rotate(360deg);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 235, 216, 0.6);
+}
+
+
+.fa-map-marker-alt:hover {
+  animation: mapBounce 0.6s ease infinite;
+}
+
+@keyframes mapBounce {
+  0%, 100% { transform: translateY(0) scale(1.3); }
+  50% { transform: translateY(-5px) scale(1.4); }
+}
+
+.fa-phone:hover {
+  animation: phoneRing 0.5s ease infinite;
+}
+
+@keyframes phoneRing {
+  0%, 100% { transform: rotate(0deg) scale(1.3); }
+  25% { transform: rotate(-15deg) scale(1.4); }
+  75% { transform: rotate(15deg) scale(1.4); }
+}
+
+.fa-envelope:hover {
+  animation: envelopeFloat 1s ease infinite;
+}
+
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0) scale(1.3); }
+  50% { transform: translateY(-8px) scale(1.4); }
+}
+
+.footer-container {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-container::before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.05));
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+.site-footer:hover .footer-container::before {
+  transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+  .footer-column:hover {
+    transform: translateY(-5px);
+  }
+  
+  .social-links a:hover {
+    transform: translateY(-8px) scale(1.1);
+  }
+  
+  .footer-column ul li:hover {
+    padding-left: 15px;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.footer-column:hover::before {
+  content: '✨';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  animation: sparkle 2s ease infinite;
+  pointer-events: none;
+}
 /* Fade Animation */
 @keyframes fadeIn {
   from {
@@ -1006,4 +1558,129 @@ header {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* slider */
+/* --- CLEAN FIXED CAROUSEL CSS --- */
+
+#myCarousel {
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Give all slides equal height */
+#myCarousel .carousel-item {
+    height: 400px;
+}
+
+/* Images fill the slide properly – NO absolute position */
+#myCarousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Indicators */
+.carousel-indicators {
+    bottom: 15px;
+}
+
+.carousel-indicators button {
+    background-color: #fff !important;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Arrows – white and bigger */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    width: 45px;
+    height: 45px;
+}
+
+/* Fix arrow position */
+#myCarousel .carousel-control-prev,
+#myCarousel .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Carousel Container */
+#myCarousel {
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Responsive slide height */
+.carousel-item {
+    height: 55vh;         /* Desktop */
+}
+
+@media (max-width: 992px) {
+    .carousel-item {
+        height: 45vh;     /* Tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 35vh;     /* Mobile */
+    }
+}
+
+/* Images fill cleanly */
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption styling */
+.carousel-caption h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+@media (max-width: 992px) {
+    .carousel-caption h1 {
+        font-size: 1.7rem;   /* Tablet */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h1 {
+        font-size: 1.3rem;   /* Mobile */
+    }
+}
+
+/* Arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    width: 40px;
+    height: 40px;
+}
+
+#myCarousel .carousel-control-prev,
+#myCarousel .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Indicators */
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+form{
+  padding-left: 500px;
+  border-color: #c55454;
 }
