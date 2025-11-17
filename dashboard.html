@@ -646,7 +646,7 @@
         if (data.gender !== undefined)
           dashGender.innerHTML = `<strong>Gender:</strong> ${data.gender}`;
         if (data.address !== undefined)
-          dashAddress.innerHTML = `<strong>Gender:</strong> ${data.address}`;
+          dashAddress.innerHTML = `<strong>Address:</strong> ${data.address}`;
       }
 
       // Helper: load from localStorage or DOM
@@ -674,12 +674,12 @@
             .slice(1)
             .join(":")
             .trim();
-          const genderText = dashPhone.textContent
+          const genderText = dashGender.textContent
             .split(":")
             .slice(1)
             .join(":")
             .trim();
-          const addressText = dashPhone.textContent
+          const addressText = dashAddress.textContent
             .split(":")
             .slice(1)
             .join(":")
@@ -740,3 +740,4 @@
     </script>
   </body>
 </html>
+
