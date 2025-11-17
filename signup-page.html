@@ -1,42 +1,204 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-    <link rel="stylesheet" href="./css/signup.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- header -->
     <header>
-        <div class="containerImg">
-            <img src="images/giftLogo.png" id="giftLogo" alt="Gift" />
-            <h1>Create account</h1>
-            <nav> 
-                <a class="linkColor" href="./index.html">Home</a>
-            </nav>
-        </div>
+      <div class="containerImg">
+        <img src="images/giftLogo.png" id="giftLogo" alt="Gift" />
+        <h1>
+          <a class="linkColor" href="./index.html">Back to Home</a>
+        </h1>
+      </div>
     </header>
+    <!-- sign up form -->
     <div class="divform">
-        <form>
-            <div class="formgroup">
-                <!--form items-->
-                <label class="formgroup-label1">Create your account</label>
-                <label class="formgroup-label-inputs">First name</label>
-                <input placeholder="Enter your first name" name="text" id="first-name" type="text"/>
-                <label class="formgroup-label-inputs">Last name</label>
-                <input placeholder="Enter your last name" name="text" id="last-name" type="text"/>
-                <label class="formgroup-label-inputs">Email</label>
-                <input placeholder="Enter your email" name= "email" id="email" type="text"/>
-                <label class="formgroup-label-inputs">Password</label>
-                <input placeholder="Enter your password" name="password" id="password" type="password"/>
-            </div>
-            <!--form Buttons and links-->
-            <div class="buttonContainer">
-                <button>Signup</button>
-                <a href="./login.html">Already have an account?</a>
-            </div>
-        </form>
+      <h1 class="title">Create Your Account</h1>
+      <form id="signupForm">
+        <div class="formgroup">
+          <!--form items-->
+          <label class="formgroup-label1">New User</label>
+          <label class="formgroup-label-inputs">First name</label>
+          <input
+            placeholder="Enter your first name"
+            name="text"
+            id="first-name"
+            type="text"
+          />
+          <small class="error" id="fnameError"></small>
+
+          <label class="formgroup-label-inputs">Last name</label>
+          <input
+            placeholder="Enter your last name"
+            name="text"
+            id="last-name"
+            type="text"
+          />
+          <small class="error" id="lnameError"></small>
+
+          <label class="formgroup-label-inputs">Email</label>
+          <input
+            placeholder="Enter your email"
+            name="email"
+            id="email"
+            type="text"
+          />
+          <small class="error" id="emailError"></small>
+
+          <label class="formgroup-label-inputs">Password</label>
+          <input
+            placeholder="Enter your password"
+            name="password"
+            id="password"
+            type="password"
+          />
+          <small class="error" id="passwordError"></small>
+        </div>
+        <!--form Buttons and links-->
+        <div class="buttonContainer">
+          <button class="btn" id="login">Signup</button>
+          <a href="./login.html" id="alreadyAcc">Already have an account?</a>
+        </div>
+      </form>
     </div>
-</body>
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>GiftMyWay</h3>
+          <p>
+            Your one-stop shop for unique and personalized gifts. Find the
+            perfect present for men, women, kids, and every special occasion.
+          </p>
+        </div>
 
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="#customize">Customize a Gift</a></li>
+          </ul>
+        </div>
 
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 123 Gift Lane, New Delhi,
+            India
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> support@giftmyway.com</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <p>Get a-glimpse of our new arrivals and special offers.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Pinterest"
+              ><i class="fab fa-pinterest-p"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 GiftMyWay. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- sign up form validation -->
+    <script>
+      const form = document.getElementById("signupForm");
+
+      const fname = document.getElementById("first-name");
+      const lname = document.getElementById("last-name");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+
+      const fnameError = document.getElementById("fnameError");
+      const lnameError = document.getElementById("lnameError");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let isValid = true;
+
+        // First name validation
+        if (fname.value.trim() === "") {
+          fnameError.textContent = "First name is required";
+          fname.classList.add("error-input");
+          isValid = false;
+        } else {
+          fnameError.textContent = "";
+          fname.classList.remove("error-input");
+        }
+
+        // Last name validation
+        if (lname.value.trim() === "") {
+          lnameError.textContent = "Last name is required";
+          lname.classList.add("error-input");
+          isValid = false;
+        } else {
+          lnameError.textContent = "";
+          lname.classList.remove("error-input");
+        }
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.value.trim() === "") {
+          emailError.textContent = "Email is required";
+          email.classList.add("error-input");
+          isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+          emailError.textContent = "Enter a valid email";
+          email.classList.add("error-input");
+          isValid = false;
+        } else {
+          emailError.textContent = "";
+          email.classList.remove("error-input");
+        }
+
+        // Password validation
+        if (password.value.trim() === "") {
+          passwordError.textContent = "Password is required";
+          password.classList.add("error-input");
+          isValid = false;
+        } else if (password.value.length < 6) {
+          passwordError.textContent = "Password must be at least 6 characters";
+          password.classList.add("error-input");
+          isValid = false;
+        } else {
+          passwordError.textContent = "";
+          password.classList.remove("error-input");
+        }
+
+        // If form is valid
+        if (isValid) {
+          alert("Signup Successful!");
+          form.submit();
+        }
+      });
+    </script>
+  </body>
 </html>
