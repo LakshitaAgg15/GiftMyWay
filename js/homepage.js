@@ -122,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // edit profile javascript
-
 document.getElementById("editProfileForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
 

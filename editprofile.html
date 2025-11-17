@@ -1,40 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="assets/favicon_io/site.webmanifest">
-</head>
-<body>
+    <!-- <link rel="stylesheet" href="css/home.css" /> -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
+    <style>
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
 
-    <!-- Edit Profile Container -->
-    <header><div class="edit-profile-container">
-        <h1 color="white">Edit Profile</h1></div></header>
-        <br><br>
-        
-        <!-- Edit Profile Form -->
+      .modal-overlay.hidden {
+        display: none;
+      }
+
+      .modal {
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        width: 350px;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      .input-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .btn-primary {
+        background: #4b70f5;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: none;
+      }
+
+      .btn-secondary {
+        background: #ddd;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal-overlay hidden">
+      <div class="modal">
+        <h2>Edit Profile</h2>
+
         <form id="editProfileForm">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name:" required><br><br>
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="editName" required />
+          </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email:" required><br><br>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" id="editEmail" required />
+          </div>
 
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number:" required><br><br>
+          <div class="input-group">
+            <label>Phone</label>
+            <input type="text" id="editPhone" required />
+          </div>
 
-            <label for="profilePhoto:">Profile Photo</label>
-            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*"><br><br>
-
-            <button type="submit" class="save-btn">Save Changes</button>
+          <div class="modal-actions">
+            <button type="button" id="cancelEdit" class="btn-secondary">
+              Cancel
+            </button>
+            <button type="submit" id="saveChangesBtn" class="btn-primary">
+              Save Changes
+            </button>
+          </div>
         </form>
-    <!-- </div> -->
+      </div>
+    </div>
 
-    <script src="js/homepage.js"></script>
-</body>
+    <!-- <script src="js/homepage.js"></script> -->
+    <script type="module">
+      import { auth, db } from "./firebaseConfig.js";
+
+      import {
+        doc,
+        getDoc,
+        updateDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      const editBtn = document.getElementById("editProfileBtn");
+      const modal = document.getElementById("editProfileModal");
+      const cancelEdit = document.getElementById("cancelEdit");
+      const saveChangesBtn = document.getElementById("saveChangesBtn");
+
+      const editName = document.getElementById("editName");
+      const editEmail = document.getElementById("editEmail");
+      const editPhone = document.getElementById("editPhone");
+
+      const dashName = document.getElementById("dashName");
+      const dashEmail = document.getElementById("dashEmail");
+      const dashPhone = document.getElementById("dashPhone");
+
+      // 🔥 STEP A — Load User Data and Fill Dashboard
+      auth.onAuthStateChanged(async (user) => {
+        if (!user) return;
+
+        const docRef = doc(db, "users", user.uid);
+        const snapshot = await getDoc(docRef);
+
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+
+          dashName.textContent = data.name;
+          dashEmail.textContent = data.email;
+          dashPhone.textContent = data.phone;
+        }
+      });
+
+      // 🔥 STEP B — Open Edit Modal With Prefilled Data
+      editBtn.addEventListener("click", async () => {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const docRef = doc(db, "users", user.uid);
+        const snapshot = await getDoc(docRef);
+
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+
+          editName.value = data.name || "";
+          editEmail.value = data.email || "";
+          editPhone.value = data.phone || "";
+        }
+
+        modal.classList.remove("hidden");
+      });
+
+      // 🔥 Cancel Edit
+      cancelEdit.addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
+
+      // 🔥 STEP C — Save Changes to Firestore
+      editProfileForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        saveChangesBtn.textContent = "Saving...";
+        saveChangesBtn.disabled = true;
+
+        const user = auth.currentUser;
+
+        const updatedData = {
+          name: editName.value,
+          email: editEmail.value,
+          phone: editPhone.value,
+        };
+
+        try {
+          const docRef = doc(db, "users", user.uid);
+          await updateDoc(docRef, updatedData);
+
+          // Update dashboard instantly
+          dashName.textContent = updatedData.name;
+          dashEmail.textContent = updatedData.email;
+          dashPhone.textContent = updatedData.phone;
+
+          modal.classList.add("hidden");
+        } catch (error) {
+          console.error("Error updating profile:", error);
+        }
+
+        saveChangesBtn.textContent = "Save Changes";
+        saveChangesBtn.disabled = false;
+      });
+    </script>
+  </body>
 </html>
