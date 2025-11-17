@@ -896,7 +896,7 @@ header {
 
 /* Give all slides equal height */
 #myCarousel .carousel-item {
-    height: 550px;
+    height: 400px;
 }
 
 /* Images fill the slide properly – NO absolute position */
