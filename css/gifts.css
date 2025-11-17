@@ -595,7 +595,7 @@
 /* --- Dark Mode Support (Optional) --- */
 @media (prefers-color-scheme: dark) {
   .gift-section {
-    background-color: #121111;
+    background-color: #fff9f9;
   }
   
   .gift-section h2 {
@@ -603,12 +603,12 @@
   }
   
   .gift-card {
-    background-color: #2a2a2a;
+    background-color: #ffffff;
     border-color: #444;
     color: #fff;
   }
   
   .gift-card:hover {
-    background-color: #3a3a3a;
+    background-color: #ffffff;
   }
 }
