@@ -62,46 +62,6 @@ document.addEventListener("DOMContentLoaded", function() {
   handleAutoScroll();
 }); 
 
-// img slider
-const carousel = document.querySelector('.carousel');
-const inner = carousel.querySelector('.carousel-inner');
-const items = inner.querySelectorAll('.carousel-item');
-const prevBtn = carousel.querySelector('.carousel-control-prev');
-const nextBtn = carousel.querySelector('.carousel-control-next');
-const indicators = carousel.querySelectorAll('.carousel-indicators button');
-
-let currentIndex = 0;
-const total = items.length;
-
-function updateCarousel(index) {
-  inner.style.transform = `translateX(-${index * 100}%)`;
-  indicators.forEach((btn,i) => btn.classList.toggle('active', i === index));
-}
-
-// Controls
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + total) % total;
-  updateCarousel(currentIndex);
-});
-
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % total;
-  updateCarousel(currentIndex);
-});
-
-// Indicator click
-indicators.forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    currentIndex = i;
-    updateCarousel(currentIndex);
-  });
-});
-
-// Auto-play
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % total;
-  updateCarousel(currentIndex);
-}, 3000);
 
 document.addEventListener("DOMContentLoaded", function () {
     // Get all links with class 'scroll-link'
