@@ -1,3 +1,4 @@
+console.log("cart.js loaded");
 
 function addToCart(product) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
