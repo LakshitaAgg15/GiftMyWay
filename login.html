@@ -1,39 +1,163 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="./css/login.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- header -->
     <header>
-        <div class="containerImg">        
-            <img src="images/giftLogo.png" id="giftLogo" alt="Gift" />
-            <h1>Login</h1>
-            <nav> 
-                <a class="linkColor" href="./index.html">Home</a>
-            </nav>
-        </div>
+      <div class="containerImg">
+        <img src="images/giftLogo.png" id="giftLogo" alt="Gift" />
+        <h1>
+          <a class="linkColor" href="./index.html">Back to Home</a>
+        </h1>
+      </div>
     </header>
+    <!-- form -->
     <div class="divform">
-        <form>
-            <div class="formgroup">
-                <!--form items-->
-                <label class="formgroup-label1">Welcome back!</label>
-                <label class="formgroup-label-inputs">Email</label>
-                <input placeholder="Enter your email" name= "email" id="email" type="text"/>
-                <label class="formgroup-label-inputs">Password</label>
-                <input placeholder="Enter your password" name="password" id="password" type="password"/>
-            </div>
-            <!--form Buttons and links-->
-            <div class="buttonContainer">
-                <button>Login</button>
-                <a>Forgot password?</a>
-                <a href="./signup-page.html">Create account</a>
-            </div>
-        </form>
+      <form id="loginForm">
+        <h1 class="titile">Login To Your Account</h1>
+        <div class="formgroup">
+          <!--form items-->
+          <label class="formgroup-label1">Welcome back!</label>
+          <label class="formgroup-label-inputs">Email</label>
+          <input
+            placeholder="Enter your email"
+            name="email"
+            id="email"
+            type="text"
+          />
+          <small class="error" id="emailError"></small>
+          <label class="formgroup-label-inputs">Password</label>
+          <input
+            placeholder="Enter your password"
+            name="password"
+            id="password"
+            type="password"
+          />
+          <small class="error" id="passwordError"></small>
+        </div>
+        <!--form Buttons and links-->
+        <div class="buttonContainer">
+          <button class="btn" id="login">Login</button>
+          <a>Forgot password?</a>
+          <button class="btn" id="register">
+            <a href="./signup-page.html">Create account</a>
+          </button>
+        </div>
+      </form>
     </div>
-</body>
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>GiftMyWay</h3>
+          <p>
+            Your one-stop shop for unique and personalized gifts. Find the
+            perfect present for men, women, kids, and every special occasion.
+          </p>
+        </div>
 
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="#customize">Customize a Gift</a></li>
+          </ul>
+        </div>
 
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 123 Gift Lane, New Delhi,
+            India
+          </p>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> support@giftmyway.com</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <p>Get a-glimpse of our new arrivals and special offers.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Pinterest"
+              ><i class="fab fa-pinterest-p"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 GiftMyWay. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- script -->
+    <script>
+      const form = document.getElementById("loginForm");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      // errors
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // stop form submit
+
+        let isValid = true;
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.value.trim() === "") {
+          emailError.textContent = "Email is required";
+          email.classList.add("error-input");
+          isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+          emailError.textContent = "Enter a valid email";
+          email.classList.add("error-input");
+          isValid = false;
+        } else {
+          emailError.textContent = "";
+          email.classList.remove("error-input");
+        }
+
+        // Password validation
+        if (password.value.trim() === "") {
+          passwordError.textContent = "Password is required";
+          password.classList.add("error-input");
+          isValid = false;
+        } else if (password.value.length < 6) {
+          passwordError.textContent = "Password must be at least 6 characters";
+          password.classList.add("error-input");
+          isValid = false;
+        } else {
+          passwordError.textContent = "";
+          password.classList.remove("error-input");
+        }
+
+        // If everything is valid
+        if (isValid) {
+          alert("Login Successful!");
+          form.submit();
+        }
+      });
+    </script>
+  </body>
 </html>
