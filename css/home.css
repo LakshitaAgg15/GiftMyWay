@@ -1607,3 +1607,74 @@ button:active {
     top: 50%;
     transform: translateY(-50%);
 }
+
+/* Carousel Container */
+#myCarousel {
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Responsive slide height */
+.carousel-item {
+    height: 55vh;         /* Desktop */
+}
+
+@media (max-width: 992px) {
+    .carousel-item {
+        height: 45vh;     /* Tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 35vh;     /* Mobile */
+    }
+}
+
+/* Images fill cleanly */
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption styling */
+.carousel-caption h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+@media (max-width: 992px) {
+    .carousel-caption h1 {
+        font-size: 1.7rem;   /* Tablet */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h1 {
+        font-size: 1.3rem;   /* Mobile */
+    }
+}
+
+/* Arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    width: 40px;
+    height: 40px;
+}
+
+#myCarousel .carousel-control-prev,
+#myCarousel .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Indicators */
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
