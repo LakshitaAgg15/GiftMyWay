@@ -9,7 +9,7 @@
 
 button {
   /* background-image: url(gift.jpg); */
-  height: 100px;
+  height: 50px;
   width: 120px;
   border-radius: 10px;
   border-width: 2px;
@@ -1677,4 +1677,9 @@ button:active {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+}
+
+form{
+  padding-left: 500px;
+  border-color: #c55454;
 }
