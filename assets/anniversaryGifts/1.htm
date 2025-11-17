@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <script>//<![CDATA[
+      var s = false;
+      function l() {
+        setTimeout(f, 10000);
+        if (document.referrer) {
+          try {
+            var pm = /(^|&|\?)px=([^&]*)(&|$)/i;
+            var px = window.location.href.match(pm);
+            var rs = document.referrer;
+            if (px != null) {
+              if (rs.match(pm))
+                rs = rs.replace(pm, "$1px=" + px[2] + "$3");
+              else if (rs.indexOf("?") != -1)
+                rs = rs + "&px=" + px[2];
+              else
+                rs = rs + "?px=" + px[2];
+            }
+            history.replaceState({}, "Bing", rs);
+            window.addEventListener("pageshow", function(e) { if (e.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) window.location.reload(); });
+            s = true;
+            setTimeout(r, 10);
+            return;
+          } catch (e) {}
+        }
+        r();
+      }
+      function r() {
+        var u = "https://www.wakefit.co/garden-decor/solentha-artificial-plant/WARPLSOHAPLGRS1?msclkid=ee8e8047ace21b8d6f16e95cb610d868&utm_source=bing&utm_medium=cpc&utm_campaign=HM_Bing_Shopping_CatchAll&utm_term=4587574838616864&utm_content=All%20Products";
+        if (s)
+          window.location.href = u;
+        else
+          window.location.replace(u);
+      }
+      function f() {
+        document.getElementById("fb").style.display = "block";
+      }
+      //]]>
+    </script>
+  </head>
+  <body onload="l()">
+    <div id="fb" style="display: none">
+      Please <a href="https://www.bing.com:443/aclick?ld=e87a3PVLgN3IR00KDV8zwPCTVUCUxCx76HupiufAshti4kfJwssEeCz8KULkt3guwfNT7q-UpRMItFdPiHiXbmXbdIXQr-9R9WMgNgNt3KGyyorJJcbjSq38-DzV8N4EMFpZQunc8Pvwgna1I9h4TwMKLpedVRHc7cUSEstD4icr8OWXn8C5fBR3iNlQBB1bFNjRS3CNF6fJX5ez-IBllFgs1JGKs&amp;u=aHR0cHMlM2ElMmYlMmZ3d3cud2FrZWZpdC5jbyUyZmdhcmRlbi1kZWNvciUyZnNvbGVudGhhLWFydGlmaWNpYWwtcGxhbnQlMmZXQVJQTFNPSEFQTEdSUzElM2Ztc2Nsa2lkJTNkZWU4ZTgwNDdhY2UyMWI4ZDZmMTZlOTVjYjYxMGQ4NjglMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RITV9CaW5nX1Nob3BwaW5nX0NhdGNoQWxsJTI2dXRtX3Rlcm0lM2Q0NTg3NTc0ODM4NjE2ODY0JTI2dXRtX2NvbnRlbnQlM2RBbGwlMjUyMFByb2R1Y3Rz&amp;rlid=ee8e8047ace21b8d6f16e95cb610d868&amp;ntb=F">click here</a> if the page does not redirect automatically ...
+    </div>
+  </body>
+</html>
