@@ -816,7 +816,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
+  max-width: 100%;
+  margin:auto ;
 }
 
 .contact-title {
@@ -836,7 +837,7 @@ header {
 .contact-form {
   max-width: 600px;
   text-align: center;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .input-box input,
