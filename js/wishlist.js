@@ -16,15 +16,22 @@ function toggleWishlist(product) {
     let wishlist = getWishlist();
     const index = wishlist.findIndex(item => item.name === product.name);
 
+    let added;
+
     if (index === -1) {
         wishlist.push(product);
-        saveWishlist(wishlist);
-        return true; // added
+        added = true; // added
     } else {
         wishlist.splice(index, 1);
-        saveWishlist(wishlist);
-        return false; // removed
+        added = false; // removed
     }
+
+    saveWishlist(wishlist);
+
+    // ✅ IMPORTANT FIX
+    updateWishlistBadge();
+
+    return added;
 }
 
 // ─── Inject Heart Buttons into Product Cards ──────────────────────────────
@@ -87,7 +94,6 @@ function showWishlistToast(message) {
 }
 
 // ─── Wishlist Page Renderer ───────────────────────────────────────────────
-
 function loadWishlistPage() {
     const container = document.getElementById("wishlist-items");
     const countEl = document.getElementById("wishlist-count");
@@ -95,8 +101,13 @@ function loadWishlistPage() {
 
     const wishlist = getWishlist();
 
+    // ✅ Update count
     if (countEl) countEl.textContent = wishlist.length;
 
+    // ✅ ALSO update navbar badge (IMPORTANT)
+    updateWishlistBadge();
+
+    // Empty state
     if (wishlist.length === 0) {
         container.innerHTML = `
             <div class="wishlist-empty">
@@ -116,8 +127,12 @@ function loadWishlistPage() {
                 <p class="wishlist-price">₹${item.price.toLocaleString()}</p>
             </div>
             <div class="wishlist-actions">
-                <button class="btn btn-sm btn-outline-primary" onclick="moveToCart(${index})">🛒 Add to Cart</button>
-                <button class="btn btn-sm btn-outline-danger" onclick="removeFromWishlist(${index})">🗑 Remove</button>
+                <button class="btn btn-sm btn-outline-primary" onclick="moveToCart(${index})">
+                    🛒 Add to Cart
+                </button>
+                <button class="btn btn-sm btn-outline-danger" onclick="removeFromWishlist(${index})">
+                    🗑 Remove
+                </button>
             </div>
         </div>
     `).join("");
@@ -127,6 +142,7 @@ function removeFromWishlist(index) {
     let wishlist = getWishlist();
     const removed = wishlist.splice(index, 1)[0];
     saveWishlist(wishlist);
+    updateWishlistBadge(); 
     showWishlistToast(`Removed "${removed.name}" from Wishlist`);
     loadWishlistPage();
 }
@@ -135,16 +151,29 @@ function moveToCart(index) {
     let wishlist = getWishlist();
     const item = wishlist[index];
 
-    // Use existing cart logic
+    // Add to cart
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const existing = cart.find(c => c.name === item.name);
+
     if (existing) {
         existing.quantity += 1;
     } else {
         cart.push({ ...item, quantity: 1 });
     }
+
     localStorage.setItem("cart", JSON.stringify(cart));
 
+    // ✅ REMOVE from wishlist
+    wishlist.splice(index, 1);
+    saveWishlist(wishlist);
+
+    // ✅ UPDATE badge
+    updateWishlistBadge();
+
+    // ✅ REFRESH UI
+    loadWishlistPage();
+
+    // Toast
     showWishlistToast(`🛒 "${item.name}" added to cart!`);
 }
 
