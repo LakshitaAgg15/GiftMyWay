@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GiftMyWay</title>
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/hero.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -89,38 +90,67 @@
       </nav>
     </header>
 
+<!-- ── Hero Section ─────────────────────────────────────────────── -->
+  <section class="hero-section" aria-label="Hero banner">
+    <!-- Decorative blobs -->
+    <div class="hero-blob hero-blob--1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--2" aria-hidden="true"></div>
 
-    
-  <!-- Bootstrap Carousel -->
-   <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-eyebrow">✨ Curated with Love</span>
+        <h1 class="hero-headline">Find the Perfect<br>Gift <span class="hero-accent">🎁</span></h1>
+        <p class="hero-subtext">
+          From heartfelt birthdays to joyful celebrations — discover gifts
+          that truly surprise and delight, handpicked for every occasion.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#gift-categories" class="hero-btn hero-btn--primary">Shop Now</a>
+          <a href="dashboard.html" class="hero-btn hero-btn--secondary">My Dashboard</a>
+        </div>
+        <div class="hero-trust">
+          <span>🎀 1000+ Gift Ideas</span>
+          <span>⭐ Curated Collections</span>
+          <span>🚀 Fast Delivery</span>
+        </div>
+      </div>
 
-  
-
-  <!-- Slides -->
-  <div class="carousel-inner">
-
-    <div class="carousel-item active">
-      <img src="assets/slider/slider_first.jpg" class="d-block w-100" alt="Slide 1">
-      <div class="carousel-caption text-start">
-        <h1>Celebrate Every Bond. Find the Right Surprise.</h1>
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Illustrated gift stack built with CSS + emoji -->
+        <div class="hero-illustration">
+          <div class="gift-stack">
+            <div class="gift-card gift-card--back">
+              <div class="gift-ribbon gift-ribbon--h"></div>
+              <div class="gift-ribbon gift-ribbon--v"></div>
+              <div class="gift-bow">🎀</div>
+            </div>
+            <div class="gift-card gift-card--mid">
+              <div class="gift-ribbon gift-ribbon--h"></div>
+              <div class="gift-ribbon gift-ribbon--v"></div>
+              <div class="gift-bow">🎁</div>
+            </div>
+            <div class="gift-card gift-card--front">
+              <div class="gift-ribbon gift-ribbon--h"></div>
+              <div class="gift-ribbon gift-ribbon--v"></div>
+              <div class="gift-bow">✨</div>
+            </div>
+          </div>
+          <!-- Floating badges -->
+          <div class="float-badge float-badge--1">🎂 Birthday</div>
+          <div class="float-badge float-badge--2">💑 Anniversary</div>
+          <div class="float-badge float-badge--3">🏠 Housewarming</div>
+          <div class="float-badge float-badge--4">👶 Baby Shower</div>
+        </div>
       </div>
     </div>
 
-    <div class="carousel-item">
-      <img src="assets/slider/slider_second.jpg" class="d-block w-100" alt="Slide 2">
-      <div class="carousel-caption">
-        <h1>Gifts That Bring Smiles and Spark Joy</h1>
-      </div>
+    <!-- Wave separator -->
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#fbdbdb"/>
+      </svg>
     </div>
-
-    <div class="carousel-item">
-      <img src="assets/slider/slider_third.jpg" class="d-block w-100" alt="Slide 3">
-      <div class="carousel-caption text-end">
-        <h1>Gifting Made Easy, Happiness Delivered.</h1>
-      </div>
-    </div>
-
-  </div>
+  </section>
 
   <!-- Indicators -->
   <div class="carousel-indicators">
@@ -528,5 +558,12 @@ document.addEventListener('DOMContentLoaded', () => {
     <script src="js/homepage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="js/wishlist.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof updateWishlistBadge === "function") {
+      updateWishlistBadge();
+    }
+  });
+</script>
   </body>
 </html>
