@@ -806,62 +806,6 @@ header {
   right: -30px;
 }
 
-/* CONTACT SECTION */
-.contact-section {
-  background: linear-gradient(135deg, #ffe6f0, #fff3fa);
-  padding: 60px 20px;
-  text-align: center;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(255, 170, 200, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 100%;
-  margin: 0 auto ;
-}
-
-.contact-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #c24378;
-  margin-bottom: 10px;
-}
-
-.contact-desc {
-  font-size: 1rem;
-  color: #7d4b63;
-  opacity: 0.8;
-  margin-bottom: 30px;
-}
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.input-box input,
-.input-box textarea,
-.input-box select {
-  width: 100%;
-  padding: 14px;
-  border: 2px solid #ffc7dd;
-  border-radius: 15px;
-  background: #ffffff;
-  font-size: 1rem;
-  color: #4a2b3d;
-  margin-bottom: 20px;
-  transition: 0.3s ease;
-  box-shadow: 0 0 5px rgba(255, 150, 175, 0.2);
-}
-
-.input-box input:focus,
-.input-box textarea:focus,
-.input-box select:focus {
-  border-color: #ff8bb0;
-  box-shadow: 0 0 12px rgba(255, 120, 160, 0.5);
-  transform: scale(1.02);
-}
-
 /* BUTTON */
 .contact-btn {
   background: #e06a6a;
@@ -1722,3 +1666,109 @@ form{
   color: #333;
 }
 
+/* CONTACT SECTION */
+.contact-section {
+  background: linear-gradient(135deg, #ffe6f0, #fff3fa);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(255, 170, 200, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* TITLE */
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c24378;
+  margin-bottom: 10px;
+}
+
+/* DESCRIPTION */
+.contact-desc {
+  font-size: 1rem;
+  color: #7d4b63;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+.contact-form {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  /* optional upgrade */
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+/* INPUT BOX STRUCTURE */
+.input-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* LABEL */
+.input-box label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #4a2b3d;
+}
+
+/* INPUTS */
+.input-box input,
+.input-box textarea,
+.input-box select {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #ffc7dd;
+  border-radius: 15px;
+  background: #ffffff;
+  font-size: 1rem;
+  color: #4a2b3d;
+  margin-bottom: 18px;
+  transition: 0.3s ease;
+  box-shadow: 0 0 5px rgba(255, 150, 175, 0.2);
+}
+
+/* FOCUS EFFECT */
+.input-box input:focus,
+.input-box textarea:focus,
+.input-box select:focus {
+  border-color: #ff8bb0;
+  box-shadow: 0 0 12px rgba(255, 120, 160, 0.5);
+  transform: scale(1.02);
+}
+
+/* BUTTON */
+.contact-btn {
+  background: #e06a6a;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(255, 120, 150, 0.3);
+  transition: 0.3s ease;
+
+  align-self: center;
+}
+
+/* BUTTON HOVER */
+.contact-btn:hover {
+  background: #c55454;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 0, 120, 0.35);
+}
