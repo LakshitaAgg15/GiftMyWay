@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="./css/login.css" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="../css/login.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -11,28 +11,46 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="../assets/favicon_io/site.webmanifest">
   </head>
   <body>
     <!-- header -->
     <header>
       <div class="containerImg">
-        <img src="images/giftLogo.png" id="giftLogo" alt="Gift" />
+        <img src="../images/giftLogo.png" id="giftLogo" alt="Gift" />
         <h1>
-          <a class="linkColor" href="./index.html">Back to Home</a>
+          <a class="linkColor" href="../../index.html">Back to Home</a>
         </h1>
       </div>
     </header>
-    <!-- form -->
+    <!-- sign up form -->
     <div class="divform">
-      <form id="loginForm">
-        <h1 class="titile">Login To Your Account</h1>
+      <h1 class="title">Create Your Account</h1>
+      <form id="signupForm">
         <div class="formgroup">
           <!--form items-->
-          <label class="formgroup-label1">Welcome back!</label>
+          <label class="formgroup-label1">New User</label>
+          <label class="formgroup-label-inputs">First name</label>
+          <input
+            placeholder="Enter your first name"
+            name="text"
+            id="first-name"
+            type="text"
+          />
+          <small class="error" id="fnameError"></small>
+
+          <label class="formgroup-label-inputs">Last name</label>
+          <input
+            placeholder="Enter your last name"
+            name="text"
+            id="last-name"
+            type="text"
+          />
+          <small class="error" id="lnameError"></small>
+
           <label class="formgroup-label-inputs">Email</label>
           <input
             placeholder="Enter your email"
@@ -41,6 +59,7 @@
             type="text"
           />
           <small class="error" id="emailError"></small>
+
           <label class="formgroup-label-inputs">Password</label>
           <input
             placeholder="Enter your password"
@@ -52,11 +71,8 @@
         </div>
         <!--form Buttons and links-->
         <div class="buttonContainer">
-          <button class="btn" id="login">Login</button>
-          <a>Forgot password?</a>
-          <button class="btn" id="register">
-            <a href="./signup-page.html">Create account</a>
-          </button>
+          <button class="btn" id="login">Signup</button>
+          <a href="./login.html" id="alreadyAcc">Already have an account?</a>
         </div>
       </form>
     </div>
@@ -74,10 +90,10 @@
         <div class="footer-column">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="#customize">Customize a Gift</a></li>
+            <li><a href="../../index.html">Home</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./cart.html">Cart</a></li>
+                    <li><a href="#customize">Customize a Gift</a></li>
           </ul>
         </div>
 
@@ -112,19 +128,44 @@
         <p>&copy; 2025 GiftMyWay. All rights reserved.</p>
       </div>
     </footer>
-    <!-- script -->
+    <!-- sign up form validation -->
     <script>
-      const form = document.getElementById("loginForm");
+      const form = document.getElementById("signupForm");
+
+      const fname = document.getElementById("first-name");
+      const lname = document.getElementById("last-name");
       const email = document.getElementById("email");
       const password = document.getElementById("password");
-      // errors
+
+      const fnameError = document.getElementById("fnameError");
+      const lnameError = document.getElementById("lnameError");
       const emailError = document.getElementById("emailError");
       const passwordError = document.getElementById("passwordError");
 
       form.addEventListener("submit", function (e) {
-        e.preventDefault(); // stop form submit
+        e.preventDefault();
 
         let isValid = true;
+
+        // First name validation
+        if (fname.value.trim() === "") {
+          fnameError.textContent = "First name is required";
+          fname.classList.add("error-input");
+          isValid = false;
+        } else {
+          fnameError.textContent = "";
+          fname.classList.remove("error-input");
+        }
+
+        // Last name validation
+        if (lname.value.trim() === "") {
+          lnameError.textContent = "Last name is required";
+          lname.classList.add("error-input");
+          isValid = false;
+        } else {
+          lnameError.textContent = "";
+          lname.classList.remove("error-input");
+        }
 
         // Email validation
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -156,9 +197,9 @@
           password.classList.remove("error-input");
         }
 
-        // If everything is valid
+        // If form is valid
         if (isValid) {
-          alert("Login Successful!");
+          alert("Signup Successful!");
           form.submit();
         }
       });
