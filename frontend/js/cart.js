@@ -13,7 +13,32 @@ function addToCart(product) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateAddToCartButton(product.name);
     alert(product.name + " added to cart!");
+}
+
+function getCartQuantity(productName) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let item = cart.find(item => item.name === productName);
+    return item ? item.quantity : 0;
+}
+
+function updateAddToCartButton(productName) {
+    const buttons = document.querySelectorAll(".addcart");
+    buttons.forEach((btn) => {
+        const card = btn.closest(".card");
+        const name = card.querySelector("strong").innerText;
+        if (name === productName) {
+            const quantity = getCartQuantity(productName);
+            if (quantity > 0) {
+                btn.innerText = `In Cart (${quantity})`;
+                btn.classList.add("in-cart");
+            } else {
+                btn.innerText = "Add to cart";
+                btn.classList.remove("in-cart");
+            }
+        }
+    });
 }
 
 
@@ -23,9 +48,19 @@ function setupAddToCartButtons() {
     if (buttons.length === 0) return;
 
     buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const card = btn.closest(".card");
+        const card = btn.closest(".card");
+        const productName = card.querySelector("strong").innerText;
+        const quantity = getCartQuantity(productName);
+        
+        if (quantity > 0) {
+            btn.innerText = `In Cart (${quantity})`;
+            btn.classList.add("in-cart");
+        } else {
+            btn.innerText = "Add to cart";
+            btn.classList.remove("in-cart");
+        }
 
+        btn.addEventListener("click", () => {
             const product = {
                 name: card.querySelector("strong").innerText,
                 price: Number(card.querySelector("small").innerText.replace("₹", "")),
@@ -86,19 +121,6 @@ function increaseQty(index) {
     localStorage.setItem("cart", JSON.stringify(cart));
     loadCartPage();
 }
-
-function decreaseQty(index) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    loadCartPage();
-}
-
-
 
 function removeItem(index) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
