@@ -1,0 +1,29 @@
+{
+  "name": "giftmyway",
+  "version": "1.0.0",
+  "description": "A clean, responsive, and user-friendly static website for a conceptual online gift store. This project showcases a catalog of gift ideas, categorized for easy browsing.",
+  "main": "firebaseConfig.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harleen05/GiftMyWay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/harleen05/GiftMyWay/issues"
+  },
+  "homepage": "https://github.com/harleen05/GiftMyWay#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1"
+  }
+}
