@@ -130,112 +130,79 @@
     </footer>
     <!-- sign up form validation -->
     <script>
-  // ✅ Get elements FIRST
-  const form = document.getElementById("signupForm");
+      const form = document.getElementById("signupForm");
 
-  const fname = document.getElementById("first-name");
-  const lname = document.getElementById("last-name");
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
+      const fname = document.getElementById("first-name");
+      const lname = document.getElementById("last-name");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
 
-  const fnameError = document.getElementById("fnameError");
-  const lnameError = document.getElementById("lnameError");
-  const emailError = document.getElementById("emailError");
-  const passwordError = document.getElementById("passwordError");
+      const fnameError = document.getElementById("fnameError");
+      const lnameError = document.getElementById("lnameError");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
 
-  // ✅ Form submit
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    let isValid = true;
+        let isValid = true;
 
-    // First name validation
-    if (fname.value.trim() === "") {
-      fnameError.textContent = "First name is required";
-      fname.classList.add("error-input");
-      isValid = false;
-    } else {
-      fnameError.textContent = "";
-      fname.classList.remove("error-input");
-    }
+        // First name validation
+        if (fname.value.trim() === "") {
+          fnameError.textContent = "First name is required";
+          fname.classList.add("error-input");
+          isValid = false;
+        } else {
+          fnameError.textContent = "";
+          fname.classList.remove("error-input");
+        }
 
-    // Last name validation
-    if (lname.value.trim() === "") {
-      lnameError.textContent = "Last name is required";
-      lname.classList.add("error-input");
-      isValid = false;
-    } else {
-      lnameError.textContent = "";
-      lname.classList.remove("error-input");
-    }
+        // Last name validation
+        if (lname.value.trim() === "") {
+          lnameError.textContent = "Last name is required";
+          lname.classList.add("error-input");
+          isValid = false;
+        } else {
+          lnameError.textContent = "";
+          lname.classList.remove("error-input");
+        }
 
-    // Email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email.value.trim() === "") {
-      emailError.textContent = "Email is required";
-      email.classList.add("error-input");
-      isValid = false;
-    } else if (!emailPattern.test(email.value)) {
-      emailError.textContent = "Enter a valid email";
-      email.classList.add("error-input");
-      isValid = false;
-    } else {
-      emailError.textContent = "";
-      email.classList.remove("error-input");
-    }
+        if (email.value.trim() === "") {
+          emailError.textContent = "Email is required";
+          email.classList.add("error-input");
+          isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+          emailError.textContent = "Enter a valid email";
+          email.classList.add("error-input");
+          isValid = false;
+        } else {
+          emailError.textContent = "";
+          email.classList.remove("error-input");
+        }
 
-    // Password validation
-    if (password.value.trim() === "") {
-      passwordError.textContent = "Password is required";
-      password.classList.add("error-input");
-      isValid = false;
-    } else if (password.value.length < 6) {
-      passwordError.textContent = "Password must be at least 6 characters";
-      password.classList.add("error-input");
-      isValid = false;
-    } else {
-      passwordError.textContent = "";
-      password.classList.remove("error-input");
-    }
+        // Password validation
+        if (password.value.trim() === "") {
+          passwordError.textContent = "Password is required";
+          password.classList.add("error-input");
+          isValid = false;
+        } else if (password.value.length < 6) {
+          passwordError.textContent = "Password must be at least 6 characters";
+          password.classList.add("error-input");
+          isValid = false;
+        } else {
+          passwordError.textContent = "";
+          password.classList.remove("error-input");
+        }
 
-    // ✅ If valid → call backend
-    if (isValid) {
-      signupUser();
-    }
-  });
-
-  // ✅ Signup API call
-  async function signupUser() {
-    try {
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          firstName: fname.value,
-          lastName: lname.value,
-          email: email.value.trim(),
-          password: password.value
-        })
+        // If form is valid
+        if (isValid) {
+          alert("Signup Successful!");
+          form.submit();
+        }
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message || "Signup failed");
-        return;
-      }
-
-      alert("Signup successful! Please login.");
-      window.location.href = "./login.html";
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
-    }
-  }
-</script>
+    </script>
   </body>
 </html>

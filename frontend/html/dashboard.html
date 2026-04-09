@@ -504,115 +504,240 @@
       </div>
     </footer>
 
-    <!-- ONLY SCRIPT PART CHANGED BELOW -->
-<script>
-  const token = localStorage.getItem("token");
+    <script type="module">
+      import {
+        doc,
+        getDoc,
+        updateDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  // 🚫 If no token → redirect
-  if (!token) {
-    window.location.href = "./login.html";
-  }
+      // DOM references
+      const editBtn = document.getElementById("editProfileBtn");
+      const modal = document.getElementById("editProfileModal");
+      const cancelEdit = document.getElementById("cancelEdit");
+      const saveChangesBtn = document.getElementById("saveChangesBtn");
 
-  const dashName = document.getElementById("dashName");
-  const dashEmail = document.getElementById("dashEmail");
+      const editName = document.getElementById("editName");
+      const editEmail = document.getElementById("editEmail");
+      const editPhone = document.getElementById("editPhone");
+      const editGender = document.getElementById("editGender");
+      const editAddress = document.getElementById("editAddress");
 
-  // ✅ Fetch user from backend
-  async function getUserData() {
-    try {
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const dashName = document.getElementById("dashName");
+      const dashEmail = document.getElementById("dashEmail");
+      const dashPhone = document.getElementById("dashPhone");
+      const dashGender = document.getElementById("dashGender");
+      const dashAddress = document.getElementById("dashAddress");
+
+      const editProfileForm = document.getElementById("editProfileForm"); // <-- FIX: declare this
+
+      // firebase placeholders (may stay undefined if firebaseConfig.js missing)
+      let auth = null;
+      let db = null;
+
+      // init function to wire up handlers. Called after attempting to import firebaseConfig.
+      function init() {
+        // If Firebase auth exists, try populate from Firestore on auth state change
+        if (auth && typeof auth.onAuthStateChanged === "function") {
+          auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+              // no firebase user; maybe fallback to localStorage
+              loadFromLocal();
+              return;
+            }
+            try {
+              const docRef = doc(db, "users", user.uid);
+              const snapshot = await getDoc(docRef);
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+                fillDashboard(data);
+              } else {
+                loadFromLocal();
+              }
+            } catch (err) {
+              console.error("Error reading Firestore:", err);
+              loadFromLocal();
+            }
+          });
+        } else {
+          // no firebase: load values from DOM or localStorage
+          loadFromLocal();
         }
-      });
 
-      const data = await response.json();
+        // Open modal and prefill
+        editBtn.addEventListener("click", async () => {
+          // If firebase auth available use currentUser, otherwise prefill from page/local
+          if (auth && auth.currentUser) {
+            try {
+              const docRef = doc(db, "users", auth.currentUser.uid);
+              const snapshot = await getDoc(docRef);
+              if (snapshot.exists()) {
+                const data = snapshot.data();
+                editName.value = data.name || "";
+                editEmail.value = data.email || "";
+                editPhone.value = data.phone || "";
+                editGender.value = data.gender || "";
+                editAddress.value = data.address || "";
+              } else {
+                loadFormFromLocal();
+              }
+            } catch (err) {
+              console.error("Error fetching user doc:", err);
+              loadFormFromLocal();
+            }
+          } else {
+            loadFormFromLocal();
+          }
+          modal.classList.remove("hidden");
+        });
 
-      if (!response.ok) {
-        localStorage.removeItem("token");
-        window.location.href = "./login.html";
-        return;
+        // cancel
+        cancelEdit.addEventListener("click", () => {
+          modal.classList.add("hidden");
+        });
+
+        // submit
+        editProfileForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          saveChangesBtn.textContent = "Saving...";
+          saveChangesBtn.disabled = true;
+
+          const updatedData = {
+            name: editName.value.trim(),
+            email: editEmail.value.trim(),
+            phone: editPhone.value.trim(),
+            gender: editGender.value.trim(),
+            address: editAddress.value.trim(),
+          };
+
+          try {
+            if (auth && auth.currentUser) {
+              // Save to Firestore
+              const docRef = doc(db, "users", auth.currentUser.uid);
+              await updateDoc(docRef, updatedData);
+            } else {
+              // Fallback: save to localStorage for local testing
+              localStorage.setItem(
+                "gmw_user_profile",
+                JSON.stringify(updatedData)
+              );
+            }
+
+            // Update dashboard
+            fillDashboard(updatedData);
+            modal.classList.add("hidden");
+          } catch (err) {
+            console.error("Error saving profile:", err);
+            alert("Could not save profile. Check console for details.");
+          } finally {
+            saveChangesBtn.textContent = "Save Changes";
+            saveChangesBtn.disabled = false;
+          }
+        });
       }
 
-      // ✅ Show real data
-      dashName.textContent = `${data.user.firstName} ${data.user.lastName}`;
-      dashEmail.innerHTML = `<strong>Email:</strong> ${data.user.email}`;
+      // Helper: fill dashboard fields (keeps label if present)
+      function fillDashboard(data = {}) {
+        if (data.name !== undefined) dashName.textContent = data.name;
+        if (data.email !== undefined)
+          dashEmail.innerHTML = `<strong>Email:</strong> ${data.email}`;
+        if (data.phone !== undefined)
+          dashPhone.innerHTML = `<strong>Phone:</strong> ${data.phone}`;
+        if (data.gender !== undefined)
+          dashGender.innerHTML = `<strong>Gender:</strong> ${data.gender}`;
+        if (data.address !== undefined)
+          dashAddress.innerHTML = `<strong>Address:</strong> ${data.address}`;
+      }
 
-    } catch (error) {
-      console.error(error);
-      alert("Error loading user data");
-    }
-  }
+      // Helper: load from localStorage or DOM
+      function loadFromLocal() {
+        const local = localStorage.getItem("gmw_user_profile");
+        if (local) {
+          try {
+            const obj = JSON.parse(local);
+            fillDashboard(obj);
+          } catch (_) {
+            // parse failed — fallback to existing DOM
+          }
+        } else {
+          // nothing in localStorage: leave existing DOM content (already in HTML)
+          // or extract text from DOM to normalized form
+          const currName = dashName.textContent.trim();
+          // try to extract email and phone values after colon
+          const emailText = dashEmail.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const phoneText = dashPhone.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const genderText = dashGender.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const addressText = dashAddress.textContent
+            .split(":")
+            .slice(1)
+            .join(":")
+            .trim();
+          const obj = {
+            name: currName || "",
+            email: emailText || "",
+            phone: phoneText || "",
+            gender: genderText || "",
+            address: addressText || "",
+          };
+          // store as baseline
+          localStorage.setItem("gmw_user_profile", JSON.stringify(obj));
+        }
+      }
 
-  getUserData();
+      function loadFormFromLocal() {
+        const local = localStorage.getItem("gmw_user_profile");
+        if (local) {
+          try {
+            const obj = JSON.parse(local);
+            editName.value = obj.name || "";
+            editEmail.value = obj.email || "";
+            editPhone.value = obj.phone || "";
+            editGender.value = obj.gender || "";
+            editAddress.value = obj.address || "";
+            return;
+          } catch (_) {}
+        }
+        // fallback: take current page text
+        editName.value = dashName.textContent.trim() || "";
+        editEmail.value =
+          dashEmail.textContent.split(":").slice(1).join(":").trim() || "";
+        editPhone.value =
+          dashPhone.textContent.split(":").slice(1).join(":").trim() || "";
+        editGender.value =
+          dashGender.textContent.split(":").slice(1).join(":").trim() || "";
+        editAddress.value =
+          dashAddress.textContent.split(":").slice(1).join(":").trim() || "";
+      }
 
-  // ✅ Logout
-  document.querySelector('a[href="#logout"]').addEventListener("click", () => {
-    localStorage.removeItem("token");
-    window.location.href = "./login.html";
-  });
-
-
-  /* =========================
-     EXISTING EDIT PROFILE LOGIC (LOCAL ONLY)
-     ========================= */
-
-  const editBtn = document.getElementById("editProfileBtn");
-  const modal = document.getElementById("editProfileModal");
-  const cancelEdit = document.getElementById("cancelEdit");
-  const saveChangesBtn = document.getElementById("saveChangesBtn");
-
-  const editName = document.getElementById("editName");
-  const editEmail = document.getElementById("editEmail");
-
-  const editProfileForm = document.getElementById("editProfileForm");
-
-  editBtn.addEventListener("click", () => {
-    editName.value = dashName.textContent;
-    editEmail.value = dashEmail.textContent.replace("Email:", "").trim();
-    modal.classList.remove("hidden");
-  });
-
-  cancelEdit.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  editProfileForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  try {
-    const response = await fetch("http://localhost:5000/api/auth/update-profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        firstName: editName.value.split(" ")[0],
-        lastName: editName.value.split(" ")[1] || "",
-        email: editEmail.value
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message || "Update failed");
-      return;
-    }
-
-    // ✅ Update UI with real data
-    dashName.textContent = `${data.user.firstName} ${data.user.lastName}`;
-    dashEmail.innerHTML = `<strong>Email:</strong> ${data.user.email}`;
-
-    alert("Profile updated successfully!");
-    modal.classList.add("hidden");
-
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong");
-  }
-});
-</script>
+      // Try dynamic import of firebaseConfig (so missing file doesn't break the module)
+      (async () => {
+        try {
+          const mod = await import("./firebaseConfig.js");
+          auth = mod.auth;
+          db = mod.db;
+          console.log("Firebase config loaded.");
+        } catch (err) {
+          console.warn(
+            "firebaseConfig.js not found or failed to load — continuing without Firebase.",
+            err
+          );
+        } finally {
+          init();
+        }
+      })();
+    </script>
   </body>
 </html>
 

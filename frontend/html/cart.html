@@ -82,31 +82,6 @@
 
   </div>
 
-  <script>
-    const token = localStorage.getItem("token");
-
-fetch("http://localhost:5000/api/cart/add", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`
-  },
-  body: JSON.stringify({
-    name: "Gift Box",
-    price: 500,
-    image: "gift.jpg"
-  })
-});
-
-fetch("http://localhost:5000/api/cart", {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-})
-.then(res => res.json())
-.then(data => console.log(data));
-  </script>
-
 
 
   <script src="../js/cart.js"></script>
