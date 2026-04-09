@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GiftMyWay</title>
-    <link rel="stylesheet" href="frontend/css/home.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -46,7 +46,7 @@
             <a href="frontend/html/aboutus.html">About Us</a>
           </li>
           <li>
-             <a href="frontend/html/login.html">login</a> 
+
           </li>
         </ul>
         <ul class="nav-links mobile-menu" id="mobileMenu">
@@ -66,7 +66,7 @@
             <a href="frontend/html/aboutus.html">About Us</a>
           </li>
           <li>
-            <a href="frontend/html/login.html">login</a>
+
           </li>
           <input type="text" id="searchMenu" placeholder="Search products..." />
         </ul>
@@ -78,64 +78,12 @@
     </header>
 
 
-    
-  <!-- Bootstrap Carousel -->
-   <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-
-  
-
-  <!-- Slides -->
-  <div class="carousel-inner">
-
-    <div class="carousel-item active">
-      <img src="frontend/assets/slider/slider_first.jpg" class="d-block w-100" alt="Slide 1">
-      <div class="carousel-caption text-start">
-        <h1>Celebrate Every Bond. Find the Right Surprise.</h1>
       </div>
+
+
     </div>
+  </section>
 
-    <div class="carousel-item">
-      <img src="frontend/assets/slider/slider_second.jpg" class="d-block w-100" alt="Slide 2">
-      <div class="carousel-caption">
-        <h1>Gifts That Bring Smiles and Spark Joy</h1>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <img src="frontend/assets/slider/slider_third.jpg" class="d-block w-100" alt="Slide 3">
-      <div class="carousel-caption text-end">
-        <h1>Gifting Made Easy, Happiness Delivered.</h1>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-
-  <!-- Navigation -->
- <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" aria-label="Previous slide">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-</button>
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-
-  <button 
-  class="carousel-control-next" 
-  type="button" 
-  data-bs-target="#myCarousel" 
-  data-bs-slide="next"
-  aria-label="Next slide"
->
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
-</div>
 
     <!-- section wrapper -->
     <section class="gift-category-section">
@@ -526,5 +474,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <script src="./frontend/js/homepage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="js/wishlist.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof updateWishlistBadge === "function") {
+      updateWishlistBadge();
+    }
+  });
+</script>
   </body>
 </html>
