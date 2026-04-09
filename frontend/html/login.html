@@ -54,7 +54,9 @@
         <div class="buttonContainer">
           <button class="btn" id="login">Login</button>
           <a>Forgot password?</a>
-          <a href="./signup-page.html" class="btn">Create account</a>
+          <button class="btn" id="register">
+            <a href="./signup-page.html">Create account</a>
+          </button>
         </div>
       </form>
     </div>
@@ -112,88 +114,54 @@
     </footer>
     <!-- script -->
     <script>
-  const form = document.getElementById("loginForm");
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
+      const form = document.getElementById("loginForm");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      // errors
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
 
-  // errors
-  const emailError = document.getElementById("emailError");
-  const passwordError = document.getElementById("passwordError");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // stop form submit
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // stop form submit
+        let isValid = true;
 
-    let isValid = true;
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.value.trim() === "") {
+          emailError.textContent = "Email is required";
+          email.classList.add("error-input");
+          isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+          emailError.textContent = "Enter a valid email";
+          email.classList.add("error-input");
+          isValid = false;
+        } else {
+          emailError.textContent = "";
+          email.classList.remove("error-input");
+        }
 
-    if (email.value.trim() === "") {
-      emailError.textContent = "Email is required";
-      email.classList.add("error-input");
-      isValid = false;
-    } else if (!emailPattern.test(email.value)) {
-      emailError.textContent = "Enter a valid email";
-      email.classList.add("error-input");
-      isValid = false;
-    } else {
-      emailError.textContent = "";
-      email.classList.remove("error-input");
-    }
+        // Password validation
+        if (password.value.trim() === "") {
+          passwordError.textContent = "Password is required";
+          password.classList.add("error-input");
+          isValid = false;
+        } else if (password.value.length < 6) {
+          passwordError.textContent = "Password must be at least 6 characters";
+          password.classList.add("error-input");
+          isValid = false;
+        } else {
+          passwordError.textContent = "";
+          password.classList.remove("error-input");
+        }
 
-    // Password validation
-    if (password.value.trim() === "") {
-      passwordError.textContent = "Password is required";
-      password.classList.add("error-input");
-      isValid = false;
-    } else if (password.value.length < 6) {
-      passwordError.textContent = "Password must be at least 6 characters";
-      password.classList.add("error-input");
-      isValid = false;
-    } else {
-      passwordError.textContent = "";
-      password.classList.remove("error-input");
-    }
-
-    // If everything is valid → call login API
-    if (isValid) {
-      loginUser();
-    }
-  });
-
-  async function loginUser() {
-    try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email.value.trim(),
-          password: password.value
-        })
+        // If everything is valid
+        if (isValid) {
+          alert("Login Successful!");
+          form.submit();
+        }
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message || "Login failed");
-        return;
-      }
-
-      // store JWT
-      localStorage.setItem("token", data.token);
-
-      alert("Login successful!");
-
-      // redirect
-      window.location.href = "./dashboard.html";
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
-    }
-  }
-</script>
+    </script>
   </body>
 </html>
