@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const itemsList = document.getElementById('preview-items-list');
   const messagePreview = document.getElementById('preview-message');
   const totalCostEl = document.getElementById('total-cost');
+  const occasionInput = document.getElementById('occasion-input');
+  const relationshipInput = document.getElementById('relationship-input');
+  const toneInput = document.getElementById('tone-input');
+  const generateNoteBtn = document.getElementById('generate-note-btn');
+  const aiGeneratedNote = document.getElementById('ai-generated-note');
   
   function updatePreview() {
     
@@ -53,8 +58,52 @@ document.addEventListener('DOMContentLoaded', () => {
   messageInput.addEventListener('input', updatePreview);
 
   form.addEventListener('submit', (e) => {
+    e.preventDefault();
     alert('Your custom gift has been added to the cart! (Demo)');
   });
+
+  if (generateNoteBtn) {
+    generateNoteBtn.addEventListener('click', async () => {
+      const occasion = occasionInput.value.trim();
+      const relationship = relationshipInput.value.trim();
+      const tone = toneInput.value.trim();
+
+      if (!occasion || !relationship || !tone) {
+        alert('Please fill Occasion, Relationship, and Tone before generating.');
+        return;
+      }
+
+      const defaultBtnText = 'Generate Note';
+      generateNoteBtn.disabled = true;
+      generateNoteBtn.textContent = 'Generating...';
+
+      try {
+        const response = await fetch('/api/ai/generate-note', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ occasion, relationship, tone }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.note) {
+          throw new Error('Note generation failed.');
+        }
+
+        aiGeneratedNote.value = data.note;
+        messageInput.value = data.note;
+        updatePreview();
+      } catch (error) {
+        console.error('Error generating note:', error);
+        alert('Unable to generate note right now. Please try again.');
+      } finally {
+        generateNoteBtn.disabled = false;
+        generateNoteBtn.textContent = defaultBtnText;
+      }
+    });
+  }
 
   updatePreview();
 

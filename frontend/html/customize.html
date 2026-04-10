@@ -106,7 +106,32 @@
             </div>
 
             <div class="form-module">
-              <h3>3. Select Packaging</h3>
+              <h3>3. Generate Message with AI</h3>
+              <div class="form-group">
+                <div class="ai-field">
+                  <label for="occasion-input">Occasion</label>
+                  <input type="text" id="occasion-input" placeholder="e.g. Birthday">
+                </div>
+                <div class="ai-field">
+                  <label for="relationship-input">Relationship</label>
+                  <input type="text" id="relationship-input" placeholder="e.g. Sister">
+                </div>
+                <div class="ai-field">
+                  <label for="tone-input">Tone</label>
+                  <input type="text" id="tone-input" placeholder="e.g. Warm and cheerful">
+                </div>
+              </div>
+              <button type="button" class="custom-btn add-to-cart-btn" id="generate-note-btn">
+                Generate Note
+              </button>
+              <div class="form-group">
+                <label for="ai-generated-note" class="sr-only">Generated Note</label>
+                <textarea id="ai-generated-note" rows="4" placeholder="Your generated note will appear here..." readonly></textarea>
+              </div>
+            </div>
+
+            <div class="form-module">
+              <h3>4. Select Packaging</h3>
               <div class="form-group">
                 <div>
                   <input type="radio" id="pkg-classic" name="packaging" value="Classic Kraft" checked>
