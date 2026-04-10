@@ -203,6 +203,42 @@ textarea#gift-message:focus {
   background: #fff;
 }
 
+#occasion-input,
+#relationship-input,
+#tone-input,
+textarea#ai-generated-note {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #faf8f5;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#occasion-input:focus,
+#relationship-input:focus,
+#tone-input:focus {
+  outline: none;
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(224,106,106,0.15);
+  background: #fff;
+}
+
+textarea#ai-generated-note {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-group .ai-field {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
 /* ── Screen-reader only ───────────────────────────────────── */
 .sr-only {
   position: absolute;
