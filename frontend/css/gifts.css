@@ -686,3 +686,13 @@
   border-color: #1e7e34 !important;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer {
+  margin-top: 40px; /* replace the <br><br> */
+}
+
+
